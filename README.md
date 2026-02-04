@@ -13,7 +13,7 @@ Tiger AI Weekly 是一份专注于人工智能行业的专业周报，涵盖：
 
 ## 在线访问
 
-🌐 **GitHub Pages**: https://defi-always.github.io
+🌐 **GitHub Pages**: https://tiger-ai-insights.github.io
 
 ## 周报特点
 
