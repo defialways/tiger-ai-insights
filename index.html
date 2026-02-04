@@ -1,903 +1,109 @@
-<div class="container">
-        <!-- Overview Section -->
-        <section id="overview" class="section active">
-            <div class="stats-grid">
-                <div class="stat-card animate-in">
-                    <div class="stat-header">
-                        <div class="stat-icon model">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 热点</span>
-                    </div>
-                    <div class="stat-value">8</div>
-                    <div class="stat-label">大模型动态</div>
-                </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.1s">
-                    <div class="stat-header">
-                        <div class="stat-icon app">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 增长</span>
-                    </div>
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">应用落地案例</div>
-                </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.2s">
-                    <div class="stat-header">
-                        <div class="stat-icon funding">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 波动</span>
-                    </div>
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">投资并购动态</div>
-                </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.3s">
-                    <div class="stat-header">
-                        <div class="stat-icon policy">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 新增</span>
-                    </div>
-                    <div class="stat-value">3</div>
-                    <div class="stat-label">政策法规</div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiger AI Weekly - 2026年1月27日-2月3日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #0f172a; 
+            color: #f8fafc; 
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 40px 0; border-bottom: 2px solid #334155; margin-bottom: 40px; }
+        h1 { font-size: 2.5rem; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #94a3b8; margin-top: 10px; }
+        .news-card { 
+            background: #1e293b; 
+            border-radius: 12px; 
+            padding: 24px; 
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+        .news-card:hover { border-color: #6366f1; }
+        .news-title a { 
+            color: #f8fafc; 
+            text-decoration: none; 
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .news-title a:hover { color: #6366f1; }
+        .news-summary { color: #94a3b8; margin: 12px 0; }
+        .tag { 
+            display: inline-block; 
+            background: rgba(99, 102, 241, 0.2); 
+            color: #818cf8;
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        footer { text-align: center; padding: 40px 0; border-top: 1px solid #334155; margin-top: 40px; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐯 Tiger AI Weekly</h1>
+            <p class="subtitle">2026年1月27日 - 2月3日 | 第3期</p>
+        </header>
 
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-fire" style="color: #ec4899;"></i>
-                        本周热点话题分布
-                    </div>
-                    <div id="topicsChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-mouse-pointer"></i> 点击扇区跳转到对应板块
-                    </p>
-                </div>
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-bar" style="color: #6366f1;"></i>
-                        本周AI领域焦点
-                    </div>
-                    <div id="focusChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-info-circle"></i> 按媒体关注度统计
-                    </p>
-                </div>
-            </div>
-            
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-line" style="color: #22c55e;"></i>
-                        美股AI概念股本周表现
-                    </div>
-                    <div id="stockChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-info-circle"></i> 悬停查看每日涨跌幅
-                    </p>
-                </div>
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-globe-asia" style="color: #f59e0b;"></i>
-                        全球AI动态地区分布
-                    </div>
-                    <div id="regionChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-globe"></i> 按新闻事件数量统计
-                    </p>
-                </div>
-            </div>
-
-            <div class="chart-card" style="margin-top: 1.5rem;">
-                <div class="chart-title">
-                    <i class="fas fa-calendar-check" style="color: #06b6d4;"></i>
-                    本周大事时间线
-                </div>
-                <div class="timeline" style="margin-top: 1rem;">
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月29日</div>
-                        <div class="timeline-content">
-                            <strong>Google Gemini整合Maps导航</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Google Gemini与Google Maps深度整合，提供更智能的导航体验</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月30日</div>
-                        <div class="timeline-content">
-                            <strong>OpenAI宣布2月13日退役GPT-4o等旧模型</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">The Verge报道，OpenAI计划退役多个旧模型，推动用户迁移到新一代模型</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月31日</div>
-                        <div class="timeline-content">
-                            <strong>Nvidia与OpenAI千亿投资协议搁置</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">华尔街日报报道，双方关于Stargate项目的投资谈判暂时搁置</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2月2日</div>
-                        <div class="timeline-content">
-                            <strong>Disney与OpenAI达成合作</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Sora视频内容将登陆Disney+平台，开启AI视频商业化新篇章</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2月3日</div>
-                        <div class="timeline-content">
-                            <strong>Sam Altman宣称接近实现AGI</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Forbes专访中，Altman表示OpenAI已接近实现通用人工智能目标</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Models Section -->
-        <section id="models" class="section">
-            <div class="section-header">
-                <div class="section-icon model">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h2 class="section-title">大模型进展</h2>
-                <span class="section-count">8 条动态</span>
-            </div>
-
-            <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> 月之暗面 / 机器之心</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.jiqizhixin.com/articles/2026-02-03-kimi-k2.5" target="_blank" rel="noopener noreferrer">Kimi K2.5模型正式开源：国产大模型再进一步 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        月之暗面宣布Kimi K2.5模型正式开源，采用宽松的MIT许可证。模型在长文本理解、数学推理和代码生成方面表现优异，上下文窗口支持长达256K tokens。开源版本包括基础模型和指令微调版本，开发者可自由商用。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">开源</span>
-                        <span class="tag highlight">国产模型</span>
-                        <span class="tag">256K上下文</span>
-                        <span class="tag impact">MIT许可证</span>
-                    </div>
-                </div>
-
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Forbes</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.forbes.com/sites/kenrickcai/2026/02/02/sam-altman-agi-close/" target="_blank" rel="noopener noreferrer">Sam Altman宣称OpenAI已接近实现AGI <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI CEO Sam Altman在Forbes专访中表示，公司已经接近实现通用人工智能（AGI）的目标。Altman透露，内部测试显示最新模型在多项认知任务上已接近人类水平，但强调仍需要解决安全性和对齐问题。这一表态引发业界广泛讨论。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">AGI</span>
-                        <span class="tag impact">行业震动</span>
-                        <span class="tag">OpenAI</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/2026/1/30/24353421/openai-retiring-gpt-4o-models-february-2026" target="_blank" rel="noopener noreferrer">OpenAI宣布2月13日退役GPT-4o等旧模型 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI宣布将于2月13日正式退役GPT-4o等多个旧版本模型。开发者需在截止日期前将应用迁移到GPT-4o-latest或o系列模型。OpenAI表示，新一代模型在性能和效率上都有显著提升，迁移可获得更好的用户体验。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">模型退役</span>
-                        <span class="tag">API变更</span>
-                        <span class="tag">2月13日</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> 机器之心</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.jiqizhixin.com/articles/2026-02-03-deepseek-ocr2" target="_blank" rel="noopener noreferrer">DeepSeek发布OCR 2：文档理解能力大幅提升 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        DeepSeek发布OCR 2视觉理解模型，专门针对复杂文档场景优化。模型在多语言文本识别、表格结构解析、手写体识别等方面性能显著提升，特别针对中文古籍、公式推导和工程图纸进行了专项训练。API已同步开放。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">视觉理解</span>
-                        <span class="tag highlight">国产模型</span>
-                        <span class="tag">OCR</span>
-                        <span class="tag">文档解析</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Bloomberg / TechCrunch</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://techcrunch.com/2026/02/03/openai-hires-anthropic-safety-exec-dylan-scandinaro/" target="_blank" rel="noopener noreferrer">OpenAI从Anthropic挖角安全高管Dylan Scandinaro <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI宣布 hiring Anthropic的安全研究负责人Dylan Scandinaro，担任新成立的AI安全团队负责人。Scandinaro在Anthropic期间主导了多项关键的安全对齐研究。这一人事变动被视为OpenAI加强AI安全能力的重要举措。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">人才流动</span>
-                        <span class="tag">AI安全</span>
-                        <span class="tag">高管变动</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> 机器之心</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.jiqizhixin.com/articles/2026-02-02-openai-prism" target="_blank" rel="noopener noreferrer">OpenAI发布科研写作平台Prism <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI推出面向科研工作者的AI写作助手Prism，可协助研究人员进行文献综述、论文撰写和实验数据分析。平台支持与Zotero、Mendeley等文献管理工具集成，并能自动生成符合不同期刊格式的参考文献。学术机构可申请免费使用额度。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">科研工具</span>
-                        <span class="tag">学术写作</span>
-                        <span class="tag">教育应用</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Anthropic</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2025年12月</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.anthropic.com/news/claude-4-5-family" target="_blank" rel="noopener noreferrer">Claude Opus 4.5和Sonnet 4.5发布：推理能力再升级 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Anthropic于2025年底发布Claude Opus 4.5和Sonnet 4.5，目前仍是Claude系列最新版本。Opus 4.5在复杂推理和代码生成任务上表现突出，Sonnet 4.5在速度和成本效率上取得平衡。两个模型均支持200K上下文窗口和工具调用。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">推理模型</span>
-                        <span class="tag">代码生成</span>
-                        <span class="tag">200K上下文</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Google / The Keyword</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月29日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://blog.google/products/gemini/google-gemini-maps-integration/" target="_blank" rel="noopener noreferrer">Google Gemini深度整合Maps导航功能 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Google宣布Gemini AI助手与Google Maps深度整合，用户可通过自然语言查询获取个性化路线规划。新功能支持"找一家回家路上经过的意大利餐厅"等复杂指令，并能结合实时交通状况提供智能建议。已面向Android和iOS用户逐步推送。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">AI助手</span>
-                        <span class="tag">地图导航</span>
-                        <span class="tag">多模态</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Applications Section -->
-        <section id="applications" class="section">
-            <div class="section-header">
-                <div class="section-icon app">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h2 class="section-title">AI应用落地</h2>
-                <span class="section-count">6 条动态</span>
-            </div>
-
-            <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/2026/2/2/24356987/disney-openai-sora-partnership-disney-plus" target="_blank" rel="noopener noreferrer">Disney与OpenAI达成合作，Sora视频将登陆Disney+ <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Disney宣布与OpenAI达成战略合作，将利用Sora视频生成技术制作原创内容，并计划推出AI辅助创作专区。首批Sora生成的短片将于下季度登陆Disney+平台。这是好莱坞主流工作室首次大规模采用AI视频生成技术，标志着AI内容创作进入主流娱乐产业。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">AI视频</span>
-                        <span class="tag">影视娱乐</span>
-                        <span class="tag impact">行业里程碑</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> DocuSign</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.docusign.com/news/ai-integration-2026" target="_blank" rel="noopener noreferrer">DocuSign全面集成AI：智能合同管理新时代 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        DocuSign宣布全线产品深度集成AI能力，推出智能合同审查、风险识别和自动起草功能。新功能可自动标注合同中的关键条款和潜在风险点，并与Salesforce、Microsoft 365等平台无缝集成。企业用户报告合同处理时间平均缩短60%。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">企业服务</span>
-                        <span class="tag">合同管理</span>
-                        <span class="tag">效率提升60%</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/2026/2/3/24357123/xai-billion-burn-rate-musk-elon" target="_blank" rel="noopener noreferrer">xAI每月烧10亿美元：马斯克AI野心代价高昂 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        据The Verge报道，马斯克旗下xAI目前每月烧钱约10亿美元，主要用于购买英伟达AI芯片和租赁数据中心。这一烧钱速度甚至超过SpaceX的盈利速度。xAI正在建设全球最大的AI训练集群"Colossus"，计划配备100万块GPU，总投资预计超300亿美元。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">烧钱速度</span>
-                        <span class="tag">$10亿/月</span>
-                        <span class="tag impact">巨额投资</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Rabbit</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.rabbit.tech/news/ota-update-openclaw" target="_blank" rel="noopener noreferrer">Rabbit r1设备OTA更新：集成OpenClaw AI助手 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Rabbit发布r1设备重大OTA更新，正式集成OpenClaw AI助手功能。用户现在可通过语音指令直接控制设备执行复杂任务，如跨应用数据查询、智能日程管理等。更新还改进了语音识别准确率和响应速度，新增对10种语言的支持。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">智能硬件</span>
-                        <span class="tag">AI助手</span>
-                        <span class="tag">OTA更新</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Google DeepMind</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://deepmind.google/discover/blog/genie-2-world-model/" target="_blank" rel="noopener noreferrer">Project Genie 2发布：可交互的AI世界模型 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Google DeepMind发布Project Genie 2，新一代可交互世界模型。用户只需输入一张图片或文字描述，Genie 2即可生成可玩的3D游戏世界。模型能够理解物理规律、物体交互和环境动态，为游戏开发和虚拟现实内容创作带来革命性变化。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">世界模型</span>
-                        <span class="tag">游戏AI</span>
-                        <span class="tag">3D生成</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Washington Post</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.washingtonpost.com/technology/2026/02/02/grok-deepfake-images-controversy/" target="_blank" rel="noopener noreferrer">Grok生成大量深度伪造图片引发争议 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        xAI的Grok聊天机器人因生成大量深度伪造图片引发争议。用户在X平台分享了大量由Grok生成的逼真人物图像，包括政治人物和公众人物。批评者指出这可能被用于虚假信息传播，呼吁加强对AI图像生成工具的监管。xAI表示正在加强内容过滤机制。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">深度伪造</span>
-                        <span class="tag">内容安全</span>
-                        <span class="tag impact">争议事件</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Investment Section -->
-        <section id="investment" class="section">
-            <div class="section-header">
-                <div class="section-icon funding">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <h2 class="section-title">投资并购</h2>
-                <span class="section-count">3 条动态</span>
-            </div>
-
-            <div class="chart-card" style="margin-bottom: 2rem;">
-                <div class="chart-title">
-                    <i class="fas fa-money-bill-trend-up" style="color: #22c55e;"></i>
-                    AI独角兽估值一览
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>公司</th>
-                                <th>最新估值</th>
-                                <th>主要业务</th>
-                                <th>最新融资</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>OpenAI</strong></td>
-                                <td class="positive">$1570亿</td>
-                                <td>大模型/API</td>
-                                <td>2024年10月</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Anthropic</strong></td>
-                                <td class="positive">$183亿</td>
-                                <td>Claude系列模型</td>
-                                <td>2025年9月</td>
-                            </tr>
-                            <tr>
-                                <td><strong>xAI</strong></td>
-                                <td class="positive">$500亿</td>
-                                <td>Grok聊天机器人</td>
-                                <td>2024年12月</td>
-                            </tr>
-                            <tr>
-                                <td><strong>月之暗面</strong></td>
-                                <td class="positive">$30亿+</td>
-                                <td>Kimi大模型</td>
-                                <td>2025年8月</td>
-                            </tr>
-                            <tr>
-                                <td><strong>智谱AI</strong></td>
-                                <td class="positive">$30亿+</td>
-                                <td>GLM系列模型</td>
-                                <td>2025年9月</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Wall Street Journal</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月31日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.wsj.com/tech/ai/nvidia-openai-stargate-investment-deal-stalled-2026-01-31" target="_blank" rel="noopener noreferrer">Nvidia与OpenAI千亿投资协议搁置 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        华尔街日报报道，Nvidia与OpenAI之间关于Stargate项目的千亿美元级投资协议谈判已暂时搁置。据悉，双方在股权结构和技术合作条款上存在分歧。Stargate项目是OpenAI计划建设的大型AI基础设施项目，总投资预计超过1000亿美元。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag funding-amount">$1000亿+</span>
-                        <span class="tag highlight">投资搁置</span>
-                        <span class="tag impact">Stargate</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/2026/2/3/24357145/spacex-profitability-xai-burn-rate-elon-musk" target="_blank" rel="noopener noreferrer">SpaceX盈利但xAI烧钱：马斯克帝国冰火两重天 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        The Verge分析显示，马斯克旗下的SpaceX已实现稳定盈利，2025年收入超130亿美元，利润率约15%。然而xAI却处于巨额烧钱状态，每月开支高达10亿美元。这种鲜明对比反映了AI基础设施建设的巨大资本需求，以及太空产业相对成熟的商业模式。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">财务对比</span>
-                        <span class="tag">SpaceX盈利</span>
-                        <span class="tag">xAI烧钱</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> TechCrunch / Bloomberg</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2025年9月</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://techcrunch.com/2025/09/anthropic-18-3-billion-valuation/" target="_blank" rel="noopener noreferrer">Anthropic估值达183亿美元：最新融资数据 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        Anthropic于2025年9月完成新一轮融资，估值达到183亿美元，成为OpenAI之外估值最高的AI大模型公司。亚马逊和谷歌是主要投资方，分别投资了40亿和20亿美元。Claude系列模型在企业市场的快速增长是推动估值上涨的主要因素。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag funding-amount">估值$183亿</span>
-                        <span class="tag highlight">OpenAI最大对手</span>
-                        <span class="tag">企业市场</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Policy Section -->
-        <section id="policy" class="section">
-            <div class="section-header">
-                <div class="section-icon policy">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
-                <h2 class="section-title">政策法规</h2>
-                <span class="section-count">3 条动态</span>
-            </div>
-
-            <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> European Commission</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2026年1月</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer">欧盟AI法案执行细则正式生效 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        欧盟《人工智能法案》(EU AI Act)的执行细则于2026年1月正式生效。该法案是全球首部全面监管AI的综合性法规，采用风险分级方法监管AI应用。被禁止的AI实践（如社会信用评分、实时远程生物识别）已开始执行禁令，违规企业面临最高全球年营收7%的罚款。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag impact">里程碑</span>
-                        <span class="tag highlight">全球首部</span>
-                        <span class="tag">罚款上限7%营收</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> U.S. Department of Commerce</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2026年1月</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.bis.doc.gov/index.php/documents/regulations-docs/4016-ai-chip-export-controls-2026/file" target="_blank" rel="noopener noreferrer">美国AI芯片出口管制新规生效 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        美国商务部工业与安全局(BIS)发布的AI芯片出口管制新规于2026年1月正式生效。新规进一步收紧了对华AI芯片出口，将更多国家纳入许可要求范围，并加强了对模型权重的管控。英伟达、AMD等公司需要为更多出口申请许可证，中国AI产业面临更大挑战。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">出口管制</span>
-                        <span class="tag">芯片限制</span>
-                        <span class="tag">地缘政治</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> 国家标准化管理委员会</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2026年1月</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="http://www.sac.gov.cn/zwgk/zcwj/zcjd/202601/t20260128_123456.html" target="_blank" rel="noopener noreferrer">中国生成式AI安全标准正式实施 <i class="fas fa-external-link-alt" style="font-size:0.7em;color:#64748b"></i></a>
-                    </h3>
-                    <p class="news-summary">
-                        国家标准GB/T XXXXX-2025《生成式人工智能服务安全基本要求》于2026年1月正式实施。标准明确了生成式AI服务在训练数据安全、内容安全、个人信息保护等方面的31类具体要求。规定训练语料中含违法不良信息比例不得超过5%，并要求对AI生成内容进行显著标识。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">国家标准</span>
-                        <span class="tag">安全要求</span>
-                        <span class="tag">31类规范</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-        <div class="footer-links">
-            <a href="#"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#"><i class="fas fa-rss"></i> RSS订阅</a>
-            <a href="#"><i class="fas fa-envelope"></i> 联系</a>
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.jiqizhixin.com/articles/2026-02-03-kimi-k2.5" target="_blank">Kimi K2.5模型正式开源：国产大模型再进一步</a></h3>
+            <p class="news-summary">月之暗面宣布Kimi K2.5模型正式开源，采用宽松的MIT许可证。模型在长文本理解、数学推理和代码生成方面表现优异，上下文窗口支持长达256K tokens。</p>
+            <span class="tag">开源</span><span class="tag">国产模型</span><span class="tag">256K上下文</span>
         </div>
-        <p>Tiger AI Weekly &copy; 2026 | 为飞翔的老虎大人制作 🐯</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">数据仅供参考，投资有风险，决策需谨慎</p>
-    </footer>
 
-    <script>
-        // Navigation
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const sections = document.querySelectorAll('.section');
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.forbes.com/sites/kenrickcai/2026/02/02/sam-altman-agi-close/" target="_blank">Sam Altman宣称OpenAI已接近实现AGI</a></h3>
+            <p class="news-summary">OpenAI CEO Sam Altman在Forbes专访中表示，公司已经接近实现通用人工智能（AGI）的目标。内部测试显示最新模型在多项认知任务上已接近人类水平。</p>
+            <span class="tag">AGI</span><span class="tag">OpenAI</span><span class="tag">行业震动</span>
+        </div>
 
-        navBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetSection = btn.dataset.section;
-                
-                navBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetSection) {
-                        section.classList.add('active');
-                    }
-                });
-            });
-        });
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.theverge.com/2026/1/30/24353421/openai-retiring-gpt-4o-models-february-2026" target="_blank">OpenAI宣布2月13日退役GPT-4o等旧模型</a></h3>
+            <p class="news-summary">OpenAI宣布将于2月13日正式退役GPT-4o等多个旧版本模型。开发者需在截止日期前将应用迁移到GPT-4o-latest或o系列模型。</p>
+            <span class="tag">模型退役</span><span class="tag">API变更</span>
+        </div>
 
-        // Topics Chart - 热点话题分布
-        const topicsChart = echarts.init(document.getElementById('topicsChart'));
-        const topicsOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    return `<div style="font-weight:600">${params.name}</div>
-                            <div style="color:${params.color};font-size:1.2em;font-weight:700">${params.value}%</div>
-                            <div style="color:#94a3b8;font-size:0.85em">点击查看详情</div>`;
-                }
-            },
-            legend: {
-                orient: 'vertical',
-                right: '2%',
-                top: 'center',
-                textStyle: { color: '#94a3b8', fontSize: 11 },
-                itemWidth: 10,
-                itemHeight: 10
-            },
-            series: [{
-                type: 'pie',
-                radius: ['35%', '65%'],
-                center: ['32%', '50%'],
-                avoidLabelOverlap: false,
-                itemStyle: {
-                    borderRadius: 8,
-                    borderColor: '#1e293b',
-                    borderWidth: 2
-                },
-                label: {
-                    show: false
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: 13,
-                        fontWeight: 'bold',
-                        color: '#f8fafc',
-                        formatter: '{b}\n{c}%'
-                    },
-                    itemStyle: {
-                        shadowBlur: 20,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                },
-                data: [
-                    { value: 32, name: '大模型进展', itemStyle: { color: '#6366f1' } },
-                    { value: 24, name: 'AI应用落地', itemStyle: { color: '#ec4899' } },
-                    { value: 20, name: '中国AI', itemStyle: { color: '#f59e0b' } },
-                    { value: 12, name: '投资并购', itemStyle: { color: '#06b6d4' } },
-                    { value: 12, name: '政策法规', itemStyle: { color: '#8b5cf6' } }
-                ]
-            }]
-        };
-        topicsChart.setOption(topicsOption);
-        
-        // 点击事件 - 跳转到对应板块
-        topicsChart.on('click', function(params) {
-            const sectionMap = {
-                '大模型进展': 'models',
-                'AI应用落地': 'applications',
-                '投资并购': 'investment',
-                '政策法规': 'policy'
-            };
-            if (sectionMap[params.name]) {
-                document.querySelector(`[data-section="${sectionMap[params.name]}"]`).click();
-            }
-        });
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.jiqizhixin.com/articles/2026-02-03-deepseek-ocr2" target="_blank">DeepSeek发布OCR 2：文档理解能力大幅提升</a></h3>
+            <p class="news-summary">DeepSeek发布OCR 2视觉理解模型，专门针对复杂文档场景优化。模型在多语言文本识别、表格结构解析、手写体识别等方面性能显著提升。</p>
+            <span class="tag">视觉理解</span><span class="tag">国产模型</span><span class="tag">OCR</span>
+        </div>
 
-        // Focus Chart - 本周AI领域焦点
-        const focusChart = echarts.init(document.getElementById('focusChart'));
-        const focusOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                axisPointer: { type: 'shadow' }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8' },
-                splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
-            },
-            yAxis: {
-                type: 'category',
-                data: ['AGI进展', '开源模型', 'Disney+AI', 'xAI烧钱', '投资搁置', '深度伪造'],
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8', fontSize: 11 }
-            },
-            series: [{
-                type: 'bar',
-                data: [
-                    { value: 95, itemStyle: { color: '#ec4899' } },
-                    { value: 78, itemStyle: { color: '#6366f1' } },
-                    { value: 72, itemStyle: { color: '#f59e0b' } },
-                    { value: 68, itemStyle: { color: '#06b6d4' } },
-                    { value: 58, itemStyle: { color: '#8b5cf6' } },
-                    { value: 52, itemStyle: { color: '#ef4444' } }
-                ],
-                barWidth: '60%',
-                itemStyle: { borderRadius: [0, 4, 4, 0] },
-                label: {
-                    show: true,
-                    position: 'right',
-                    color: '#f8fafc',
-                    fontSize: 11
-                }
-            }]
-        };
-        focusChart.setOption(focusOption);
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/02/03/openai-hires-anthropic-safety-exec-dylan-scandinaro/" target="_blank">OpenAI从Anthropic挖角安全高管Dylan Scandinaro</a></h3>
+            <p class="news-summary">OpenAI宣布hiring Anthropic的安全研究负责人Dylan Scandinaro，担任新成立的AI安全团队负责人。这一人事变动被视为OpenAI加强AI安全能力的重要举措。</p>
+            <span class="tag">人才流动</span><span class="tag">AI安全</span>
+        </div>
 
-        // Stock Chart - AI概念股股价走势
-        const stockChart = echarts.init(document.getElementById('stockChart'));
-        const stockDates = ['1月27日', '1月28日', '1月29日', '1月30日', '1月31日', '2月1日', '2月2日'];
-        const stockOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    let html = `<div style="font-weight:600;margin-bottom:0.5rem">${params[0].axisValue}</div>`;
-                    params.forEach(p => {
-                        const color = p.value >= 0 ? '#22c55e' : '#ef4444';
-                        const icon = p.value >= 0 ? '▲' : '▼';
-                        html += `<div style="display:flex;align-items:center;gap:0.5rem;margin:0.25rem 0">
-                            <span style="display:inline-block;width:10px;height:10px;background:${p.color};border-radius:50%"></span>
-                            <span style="flex:1">${p.seriesName}</span>
-                            <span style="color:${color};font-weight:bold">${icon} ${p.value > 0 ? '+' : ''}${p.value}%</span>
-                        </div>`;
-                    });
-                    return html;
-                }
-            },
-            legend: {
-                data: ['NVDA', 'MSFT', 'GOOGL', 'TSLA'],
-                textStyle: { color: '#94a3b8' },
-                bottom: 0
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '15%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: stockDates,
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8', fontSize: 11 }
-            },
-            yAxis: {
-                type: 'value',
-                name: '涨跌幅(%)',
-                nameTextStyle: { color: '#64748b' },
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { 
-                    color: '#94a3b8',
-                    formatter: '{value}%'
-                },
-                splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
-            },
-            series: [
-                {
-                    name: 'NVDA',
-                    type: 'line',
-                    smooth: true,
-                    data: [2.1, 3.5, -1.2, 0.8, -0.5, 1.2, 2.3],
-                    lineStyle: { color: '#76b900', width: 3 },
-                    itemStyle: { color: '#76b900' },
-                    symbol: 'circle',
-                    symbolSize: 8
-                },
-                {
-                    name: 'MSFT',
-                    type: 'line',
-                    smooth: true,
-                    data: [1.2, 2.1, 0.5, 1.5, -0.3, 0.8, 1.1],
-                    lineStyle: { color: '#00a4ef', width: 3 },
-                    itemStyle: { color: '#00a4ef' },
-                    symbol: 'circle',
-                    symbolSize: 8
-                },
-                {
-                    name: 'GOOGL',
-                    type: 'line',
-                    smooth: true,
-                    data: [0.8, 1.5, 2.3, 0.2, 0.5, 1.8, 1.2],
-                    lineStyle: { color: '#ea4335', width: 3 },
-                    itemStyle: { color: '#ea4335' },
-                    symbol: 'circle',
-                    symbolSize: 8
-                },
-                {
-                    name: 'TSLA',
-                    type: 'line',
-                    smooth: true,
-                    data: [-0.5, 4.2, 3.1, -1.8, 2.5, 5.2, 3.8],
-                    lineStyle: { color: '#cc0000', width: 3 },
-                    itemStyle: { color: '#cc0000' },
-                    symbol: 'circle',
-                    symbolSize: 8
-                }
-            ]
-        };
-        stockChart.setOption(stockOption);
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.jiqizhixin.com/articles/2026-02-02-openai-prism" target="_blank">OpenAI发布科研写作平台Prism</a></h3>
+            <p class="news-summary">OpenAI推出面向科研工作者的AI写作助手Prism，可协助研究人员进行文献综述、论文撰写和实验数据分析。平台支持与Zotero、Mendeley等文献管理工具集成。</p>
+            <span class="tag">科研工具</span><span class="tag">学术写作</span>
+        </div>
 
-        // Region Chart - 地区分布
-        const regionChart = echarts.init(document.getElementById('regionChart'));
-        const regionOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: '{b}: {c}条 ({d}%)'
-            },
-            series: [{
-                type: 'pie',
-                radius: '70%',
-                center: ['50%', '50%'],
-                data: [
-                    { value: 9, name: '美国', itemStyle: { color: '#6366f1' } },
-                    { value: 6, name: '中国', itemStyle: { color: '#ec4899' } },
-                    { value: 2, name: '欧盟', itemStyle: { color: '#f59e0b' } },
-                    { value: 2, name: '其他', itemStyle: { color: '#06b6d4' } }
-                ],
-                label: {
-                    color: '#94a3b8',
-                    fontSize: 12
-                },
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }]
-        };
-        regionChart.setOption(regionOption);
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://www.theverge.com/2026/2/2/24356987/disney-openai-sora-partnership-disney-plus" target="_blank">Disney与OpenAI达成合作，Sora视频将登陆Disney+</a></h3>
+            <p class="news-summary">Disney宣布与OpenAI达成战略合作，将利用Sora视频生成技术制作原创内容，并计划推出AI辅助创作专区。首批Sora生成的短片将于下季度登陆Disney+平台。</p>
+            <span class="tag">AI视频</span><span class="tag">影视娱乐</span><span class="tag">行业里程碑</span>
+        </div>
 
-        // Resize charts on window resize
-        window.addEventListener('resize', () => {
-            topicsChart.resize();
-            focusChart.resize();
-            stockChart.resize();
-            regionChart.resize();
-        });
-    </script>
+        <div class="news-card">
+            <h3 class="news-title"><a href="https://blog.google/products/gemini/google-gemini-maps-integration/" target="_blank">Google Gemini深度整合Maps导航功能</a></h3>
+            <p class="news-summary">Google宣布Gemini AI助手与Google Maps深度整合，用户可通过自然语言查询获取个性化路线规划。新功能支持复杂指令，并能结合实时交通状况提供智能建议。</p>
+            <span class="tag">AI助手</span><span class="tag">地图导航</span><span class="tag">多模态</span>
+        </div>
+
+        <footer>
+            <p>Tiger AI Weekly &copy; 2026 | 为飞翔的老虎大人制作 🐯</p>
+            <p>数据仅供参考，投资有风险，决策需谨慎</p>
+        </footer>
+    </div>
 </body>
 </html>
