@@ -711,6 +711,9 @@
                         本周热点话题分布
                     </div>
                     <div id="topicsChart" class="chart-container"></div>
+                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
+                        <i class="fas fa-mouse-pointer"></i> 点击扇区跳转到对应板块
+                    </p>
                 </div>
                 <div class="chart-card">
                     <div class="chart-title">
@@ -718,6 +721,32 @@
                         融资轮次分布
                     </div>
                     <div id="fundingChart" class="chart-container"></div>
+                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
+                        <i class="fas fa-hand-pointer"></i> 点击柱状图查看详情
+                    </p>
+                </div>
+            </div>
+            
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-line" style="color: #22c55e;"></i>
+                        美股AI概念股本周表现
+                    </div>
+                    <div id="stockChart" class="chart-container"></div>
+                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
+                        <i class="fas fa-info-circle"></i> 悬停查看每日涨跌幅
+                    </p>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <i class="fas fa-coins" style="color: #f59e0b;"></i>
+                        全球AI融资地区分布
+                    </div>
+                    <div id="regionChart" class="chart-container"></div>
+                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
+                        <i class="fas fa-globe"></i> 按融资金额占比统计
+                    </p>
                 </div>
             </div>
 
@@ -1434,7 +1463,7 @@
             });
         });
 
-        // Topics Chart
+        // Topics Chart - 热点话题分布
         const topicsChart = echarts.init(document.getElementById('topicsChart'));
         const topicsOption = {
             backgroundColor: 'transparent',
@@ -1442,12 +1471,25 @@
                 trigger: 'item',
                 backgroundColor: 'rgba(30, 41, 59, 0.95)',
                 borderColor: '#334155',
-                textStyle: { color: '#f8fafc' }
+                textStyle: { color: '#f8fafc' },
+                formatter: function(params) {
+                    return `<div style="font-weight:600">${params.name}</div>
+                            <div style="color:${params.color};font-size:1.2em;font-weight:700">${params.value}%</div>
+                            <div style="color:#94a3b8;font-size:0.85em">点击查看详情</div>`;
+                }
+            },
+            legend: {
+                orient: 'vertical',
+                right: '5%',
+                top: 'center',
+                textStyle: { color: '#94a3b8' },
+                itemWidth: 12,
+                itemHeight: 12
             },
             series: [{
                 type: 'pie',
                 radius: ['40%', '70%'],
-                center: ['50%', '50%'],
+                center: ['35%', '50%'],
                 avoidLabelOverlap: false,
                 itemStyle: {
                     borderRadius: 8,
@@ -1455,9 +1497,21 @@
                     borderWidth: 2
                 },
                 label: {
-                    show: true,
-                    color: '#f8fafc',
-                    formatter: '{b}\n{c}%'
+                    show: false
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                        color: '#f8fafc',
+                        formatter: '{b}\n{c}%'
+                    },
+                    itemStyle: {
+                        shadowBlur: 20,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
                 },
                 data: [
                     { value: 28, name: '大模型进展', itemStyle: { color: '#6366f1' } },
@@ -1469,16 +1523,43 @@
             }]
         };
         topicsChart.setOption(topicsOption);
+        
+        // 点击事件 - 跳转到对应板块
+        topicsChart.on('click', function(params) {
+            const sectionMap = {
+                '大模型进展': 'models',
+                'AI应用落地': 'applications',
+                '投资并购': 'investment',
+                '政策法规': 'policy'
+            };
+            if (sectionMap[params.name]) {
+                document.querySelector(`[data-section="${sectionMap[params.name]}"]`).click();
+            }
+        });
 
-        // Funding Chart
+        // Funding Chart - 融资轮次分布
         const fundingChart = echarts.init(document.getElementById('fundingChart'));
+        const fundingData = [
+            { name: '种子轮', value: 3, avgAmount: '$200万' },
+            { name: 'A轮', value: 5, avgAmount: '$1500万' },
+            { name: 'B轮', value: 4, avgAmount: '$8000万' },
+            { name: 'C轮', value: 2, avgAmount: '$3亿' },
+            { name: 'D轮+', value: 0, avgAmount: '-' },
+            { name: '战略投资', value: 1, avgAmount: '$20亿' }
+        ];
         const fundingOption = {
             backgroundColor: 'transparent',
             tooltip: {
                 trigger: 'axis',
                 backgroundColor: 'rgba(30, 41, 59, 0.95)',
                 borderColor: '#334155',
-                textStyle: { color: '#f8fafc' }
+                textStyle: { color: '#f8fafc' },
+                formatter: function(params) {
+                    const data = fundingData[params[0].dataIndex];
+                    return `<div style="font-weight:600">${data.name}</div>
+                            <div style="color:#22d3ee;font-size:1.2em;font-weight:700">${params[0].value} 笔</div>
+                            <div style="color:#94a3b8;font-size:0.85em">平均融资: ${data.avgAmount}</div>`;
+                }
             },
             grid: {
                 left: '3%',
@@ -1488,35 +1569,241 @@
             },
             xAxis: {
                 type: 'category',
-                data: ['种子轮', 'A轮', 'B轮', 'C轮', 'D轮+', '战略投资'],
+                data: fundingData.map(d => d.name),
                 axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8' }
+                axisLabel: { color: '#94a3b8', fontSize: 12 }
             },
             yAxis: {
                 type: 'value',
+                name: '事件数',
+                nameTextStyle: { color: '#64748b' },
                 axisLine: { lineStyle: { color: '#334155' } },
                 axisLabel: { color: '#94a3b8' },
                 splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
             },
             series: [{
-                data: [3, 5, 4, 2, 0, 1],
+                data: fundingData.map((d, i) => ({
+                    value: d.value,
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: ['#6366f1', '#8b5cf6', '#06b6d4', '#ec4899', '#22c55e', '#f59e0b'][i] },
+                            { offset: 1, color: ['#4f46e5', '#7c3aed', '#0891b2', '#db2777', '#16a34a', '#d97706'][i] }
+                        ])
+                    }
+                })),
                 type: 'bar',
-                barWidth: '50%',
+                barWidth: '55%',
                 itemStyle: {
-                    borderRadius: [8, 8, 0, 0],
-                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                        { offset: 0, color: '#6366f1' },
-                        { offset: 1, color: '#4f46e5' }
-                    ])
+                    borderRadius: [8, 8, 0, 0]
+                },
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 20,
+                        shadowColor: 'rgba(99, 102, 241, 0.5)'
+                    }
+                },
+                label: {
+                    show: true,
+                    position: 'top',
+                    color: '#f8fafc',
+                    fontWeight: 'bold',
+                    formatter: '{c}笔'
                 }
             }]
         };
         fundingChart.setOption(fundingOption);
+        
+        // 点击事件 - 显示详细信息
+        fundingChart.on('click', function(params) {
+            const data = fundingData[params.dataIndex];
+            // 创建提示弹窗
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0,0,0,0.7); z-index: 1000;
+                display: flex; align-items: center; justify-content: center;
+            `;
+            modal.innerHTML = `
+                <div style="background: #1e293b; padding: 2rem; border-radius: 16px; max-width: 400px; border: 1px solid #334155;">
+                    <h3 style="margin: 0 0 1rem 0; color: #6366f1;">${data.name}融资详情</h3>
+                    <p style="color: #94a3b8; margin: 0.5rem 0;">本周事件数: <span style="color: #f8fafc; font-weight: bold;">${data.value} 笔</span></p>
+                    <p style="color: #94a3b8; margin: 0.5rem 0;">平均金额: <span style="color: #22d3ee; font-weight: bold;">${data.avgAmount}</span></p>
+                    <button onclick="this.closest('.modal').remove()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: #6366f1; color: white; border: none; border-radius: 8px; cursor: pointer;">关闭</button>
+                </div>
+            `;
+            modal.className = 'modal';
+            modal.onclick = (e) => { if(e.target === modal) modal.remove(); };
+            document.body.appendChild(modal);
+        });
+
+        // Stock Chart - AI概念股股价走势
+        const stockChart = echarts.init(document.getElementById('stockChart'));
+        const stockDates = ['1月27日', '1月28日', '1月29日', '1月30日', '1月31日', '2月1日', '2月2日'];
+        const stockOption = {
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'axis',
+                backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                borderColor: '#334155',
+                textStyle: { color: '#f8fafc' },
+                formatter: function(params) {
+                    let html = `<div style="font-weight:600;margin-bottom:0.5rem">${params[0].axisValue}</div>`;
+                    params.forEach(p => {
+                        const color = p.value >= 0 ? '#22c55e' : '#ef4444';
+                        const icon = p.value >= 0 ? '▲' : '▼';
+                        html += `<div style="display:flex;align-items:center;gap:0.5rem;margin:0.25rem 0">
+                            <span style="display:inline-block;width:10px;height:10px;background:${p.color};border-radius:50%"></span>
+                            <span style="flex:1">${p.seriesName}</span>
+                            <span style="color:${color};font-weight:bold">${icon} ${p.value > 0 ? '+' : ''}${p.value}%</span>
+                        </div>`;
+                    });
+                    return html;
+                }
+            },
+            legend: {
+                data: ['英伟达(NVDA)', '微软(MSFT)', '谷歌(GOOGL)', 'Meta(META)'],
+                textStyle: { color: '#94a3b8', fontSize: 11 },
+                top: 0
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                top: '15%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: stockDates,
+                axisLine: { lineStyle: { color: '#334155' } },
+                axisLabel: { color: '#94a3b8', fontSize: 10 }
+            },
+            yAxis: {
+                type: 'value',
+                name: '涨跌幅(%)',
+                nameTextStyle: { color: '#64748b', fontSize: 11 },
+                axisLine: { lineStyle: { color: '#334155' } },
+                axisLabel: { 
+                    color: '#94a3b8',
+                    formatter: '{value}%'
+                },
+                splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
+            },
+            series: [
+                {
+                    name: '英伟达(NVDA)',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    data: [-17, -4, 2, 5, 3, 1, -1],
+                    lineStyle: { color: '#76b900', width: 3 },
+                    itemStyle: { color: '#76b900' },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: 'rgba(118, 185, 0, 0.3)' },
+                            { offset: 1, color: 'rgba(118, 185, 0, 0)' }
+                        ])
+                    }
+                },
+                {
+                    name: '微软(MSFT)',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    data: [-2, -1, 1, 2, 1, 0, 1],
+                    lineStyle: { color: '#00a4ef', width: 2 },
+                    itemStyle: { color: '#00a4ef' }
+                },
+                {
+                    name: '谷歌(GOOGL)',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    data: [-4, -2, 0, 1, 2, 1, 0],
+                    lineStyle: { color: '#4285f4', width: 2 },
+                    itemStyle: { color: '#4285f4' }
+                },
+                {
+                    name: 'Meta(META)',
+                    type: 'line',
+                    smooth: true,
+                    symbol: 'circle',
+                    symbolSize: 6,
+                    data: [-1, 0, 2, 3, 1, 2, 1],
+                    lineStyle: { color: '#0668e1', width: 2 },
+                    itemStyle: { color: '#0668e1' }
+                }
+            ]
+        };
+        stockChart.setOption(stockOption);
+        
+        // 点击事件 - 放大查看
+        stockChart.on('click', function(params) {
+            console.log('点击了:', params.name, params.seriesName, params.value + '%');
+        });
+
+        // Region Chart - 融资地区分布
+        const regionChart = echarts.init(document.getElementById('regionChart'));
+        const regionOption = {
+            backgroundColor: 'transparent',
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                borderColor: '#334155',
+                textStyle: { color: '#f8fafc' },
+                formatter: function(params) {
+                    return `<div style="font-weight:600">${params.name}</div>
+                            <div style="color:${params.color};font-size:1.1em;font-weight:700">${params.value}%</div>
+                            <div style="color:#94a3b8;font-size:0.85em">主要城市: ${params.data.cities}</div>`;
+                }
+            },
+            series: [{
+                type: 'pie',
+                radius: ['30%', '75%'],
+                center: ['50%', '50%'],
+                roseType: 'area',
+                itemStyle: {
+                    borderRadius: 6,
+                    borderColor: '#1e293b',
+                    borderWidth: 2
+                },
+                label: {
+                    show: true,
+                    color: '#f8fafc',
+                    formatter: '{b}\n{c}%'
+                },
+                emphasis: {
+                    label: {
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    },
+                    itemStyle: {
+                        shadowBlur: 20,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                },
+                data: [
+                    { value: 45, name: '美国', cities: '旧金山、纽约', itemStyle: { color: '#6366f1' } },
+                    { value: 28, name: '中国', cities: '北京、上海、深圳', itemStyle: { color: '#ec4899' } },
+                    { value: 12, name: '欧洲', cities: '伦敦、巴黎、柏林', itemStyle: { color: '#06b6d4' } },
+                    { value: 8, name: '以色列', cities: '特拉维夫', itemStyle: { color: '#8b5cf6' } },
+                    { value: 4, name: '新加坡', cities: '新加坡', itemStyle: { color: '#22c55e' } },
+                    { value: 3, name: '其他', cities: '多伦多、悉尼等', itemStyle: { color: '#64748b' } }
+                ]
+            }]
+        };
+        regionChart.setOption(regionOption);
 
         // Resize charts on window resize
         window.addEventListener('resize', () => {
             topicsChart.resize();
             fundingChart.resize();
+            stockChart.resize();
+            regionChart.resize();
         });
 
         // Animate cards on scroll
