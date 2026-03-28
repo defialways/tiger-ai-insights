@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger AI Weekly - AI行业周报</title>
+    <title>Tiger AI Weekly - AI行业周报 第13期</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -24,13 +24,7 @@
             --gradient-2: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', 'Noto Sans SC', sans-serif;
             background: var(--bg-dark);
@@ -38,51 +32,36 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        /* Animated Background */
         .bg-animation {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: 
                 radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
                 radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
         }
-
         .bg-animation::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
         }
-
-        /* Header */
         header {
             padding: 2rem 0;
             text-align: center;
             position: relative;
         }
-
         .logo {
             display: inline-flex;
             align-items: center;
             gap: 1rem;
             margin-bottom: 1rem;
         }
-
         .logo-icon {
-            width: 60px;
-            height: 60px;
+            width: 60px; height: 60px;
             background: var(--gradient-1);
             border-radius: 16px;
             display: flex;
@@ -91,7 +70,6 @@
             font-size: 1.8rem;
             box-shadow: var(--shadow);
         }
-
         .logo-text {
             font-size: 2rem;
             font-weight: 700;
@@ -100,13 +78,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         .tagline {
             color: var(--text-secondary);
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
-
         .issue-info {
             display: inline-flex;
             align-items: center;
@@ -117,18 +93,12 @@
             font-size: 0.9rem;
             border: 1px solid var(--border);
         }
-
         .issue-info span {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
-        .issue-info i {
-            color: var(--primary);
-        }
-
-        /* Navigation */
+        .issue-info i { color: var(--primary); }
         nav {
             position: sticky;
             top: 0;
@@ -137,7 +107,6 @@
             z-index: 100;
             border-bottom: 1px solid var(--border);
         }
-
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -147,7 +116,6 @@
             flex-wrap: wrap;
             gap: 0.5rem;
         }
-
         .nav-btn {
             padding: 0.6rem 1.2rem;
             border: none;
@@ -161,32 +129,25 @@
             align-items: center;
             gap: 0.5rem;
         }
-
         .nav-btn:hover, .nav-btn.active {
             background: var(--bg-card);
             color: var(--text-primary);
         }
-
         .nav-btn.active {
             background: var(--gradient-1);
             color: white;
         }
-
-        /* Main Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
-
-        /* Stats Cards */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
-
         .stat-card {
             background: var(--bg-card);
             border-radius: 16px;
@@ -196,68 +157,44 @@
             position: relative;
             overflow: hidden;
         }
-
         .stat-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: var(--gradient-1);
         }
-
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow);
         }
-
         .stat-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1rem;
         }
-
         .stat-icon {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
         }
-
         .stat-icon.model { background: rgba(99, 102, 241, 0.2); color: #6366f1; }
         .stat-icon.app { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
         .stat-icon.funding { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
         .stat-icon.policy { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
-
         .stat-trend {
             font-size: 0.8rem;
             padding: 0.25rem 0.5rem;
             border-radius: 20px;
             font-weight: 500;
         }
-
-        .stat-trend.up {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Section Headers */
+        .stat-trend.up { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .stat-value { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .stat-label { color: var(--text-secondary); font-size: 0.9rem; }
         .section-header {
             display: flex;
             align-items: center;
@@ -266,27 +203,19 @@
             padding-bottom: 1rem;
             border-bottom: 2px solid var(--border);
         }
-
         .section-icon {
-            width: 50px;
-            height: 50px;
+            width: 50px; height: 50px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
         }
-
         .section-icon.model { background: var(--gradient-1); }
         .section-icon.app { background: var(--gradient-2); }
         .section-icon.funding { background: linear-gradient(135deg, #06b6d4 0%, #22c55e 100%); }
         .section-icon.policy { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
+        .section-title { font-size: 1.5rem; font-weight: 600; }
         .section-count {
             margin-left: auto;
             background: var(--bg-card);
@@ -296,14 +225,11 @@
             color: var(--text-secondary);
             border: 1px solid var(--border);
         }
-
-        /* News Cards */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 1.5rem;
         }
-
         .news-card {
             background: var(--bg-card);
             border-radius: 16px;
@@ -312,23 +238,19 @@
             transition: all 0.3s ease;
             position: relative;
         }
-
         .news-card:hover {
             transform: translateY(-3px);
             border-color: var(--primary);
             box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.3);
         }
-
         .news-card.featured {
             border-color: var(--primary);
             background: linear-gradient(135deg, var(--bg-card) 0%, rgba(99, 102, 241, 0.1) 100%);
         }
-
         .news-card.featured::before {
             content: 'Featured';
             position: absolute;
-            top: -1px;
-            right: 20px;
+            top: -1px; right: 20px;
             background: var(--gradient-1);
             color: white;
             padding: 0.25rem 0.75rem;
@@ -338,7 +260,6 @@
             letter-spacing: 0.5px;
             border-radius: 0 0 8px 8px;
         }
-
         .news-meta {
             display: flex;
             align-items: center;
@@ -347,49 +268,12 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
         }
-
-        .news-source {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .news-date {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .news-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.4;
-        }
-
-        .news-title a {
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .news-title a:hover {
-            color: var(--primary);
-        }
-
-        .news-summary {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .news-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
+        .news-source, .news-date { display: flex; align-items: center; gap: 0.4rem; }
+        .news-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; }
+        .news-title a { color: var(--text-primary); text-decoration: none; transition: color 0.3s ease; }
+        .news-title a:hover { color: var(--primary); }
+        .news-summary { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6; }
+        .news-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag {
             padding: 0.3rem 0.75rem;
             border-radius: 20px;
@@ -397,228 +281,34 @@
             font-weight: 500;
             border: 1px solid var(--border);
         }
-
-        .tag.highlight {
-            background: rgba(99, 102, 241, 0.2);
-            color: #818cf8;
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-
-        .tag.funding-amount {
-            background: rgba(6, 182, 212, 0.2);
-            color: #22d3ee;
-            border-color: rgba(6, 182, 212, 0.3);
-        }
-
-        .tag.impact {
-            background: rgba(236, 72, 153, 0.2);
-            color: #f472b6;
-            border-color: rgba(236, 72, 153, 0.3);
-        }
-
-        /* Charts Section */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .chart-card {
+        .tag.model { background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.3); }
+        .tag.app { background: rgba(236, 72, 153, 0.2); color: #f472b6; border-color: rgba(236, 72, 153, 0.3); }
+        .tag.funding { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: rgba(6, 182, 212, 0.3); }
+        .tag.policy { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border-color: rgba(139, 92, 246, 0.3); }
+        .tag.tech { background: rgba(34, 197, 94, 0.2); color: #4ade80; border-color: rgba(34, 197, 94, 0.3); }
+        .chart-container {
             background: var(--bg-card);
             border-radius: 16px;
             padding: 1.5rem;
             border: 1px solid var(--border);
-        }
-
-        .chart-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .chart-container {
-            height: 300px;
-            position: relative;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient-1);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
-            background: var(--bg-dark);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            transform: translateX(-5px);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content {
-            background: var(--bg-card);
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .data-table th,
-        .data-table td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table th {
-            background: var(--bg-hover);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-        }
-
-        .data-table tr:hover {
-            background: rgba(99, 102, 241, 0.05);
-        }
-
-        .data-table .positive {
-            color: #22c55e;
-        }
-
-        .data-table .negative {
-            color: #ef4444;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
             margin-bottom: 1.5rem;
         }
-
-        .footer-links a {
+        .chart-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-secondary); }
+        footer {
+            text-align: center;
+            padding: 3rem 0;
             color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
         }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Responsive */
+        footer a { color: var(--primary); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
         @media (max-width: 768px) {
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .charts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .logo-text {
-                font-size: 1.5rem;
-            }
-            
-            .issue-info {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--bg-hover);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-in {
-            animation: fadeIn 0.6s ease forwards;
-        }
-
-        /* Section */
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
+            .news-grid { grid-template-columns: 1fr; }
+            .issue-info { flex-direction: column; gap: 0.5rem; }
+            .nav-container { padding: 1rem; }
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -630,1149 +320,459 @@
             <div class="logo-icon">🐯</div>
             <div class="logo-text">Tiger AI Weekly</div>
         </div>
-        <p class="tagline">洞察AI前沿，捕捉行业脉搏</p>
+        <p class="tagline">AI行业专业周报 · 为飞翔的老虎大人打造</p>
         <div class="issue-info">
-            <span><i class="fas fa-calendar-alt"></i> 2026年2月11日 - 2月17日</span>
-            <span><i class="fas fa-file-alt"></i> 第5期</span>
-            <span><i class="fas fa-sync"></i> 周报</span>
+            <span><i class="fas fa-calendar"></i> 2026年3月24日 - 3月28日</span>
+            <span><i class="fas fa-book"></i> 第13期</span>
+            <span><i class="fas fa-fire"></i> 本周热点</span>
         </div>
     </header>
 
     <nav>
         <div class="nav-container">
-            <button class="nav-btn active" data-section="overview">
-                <i class="fas fa-chart-pie"></i> 概览
-            </button>
-            <button class="nav-btn" data-section="models">
-                <i class="fas fa-brain"></i> 大模型进展
-            </button>
-            <button class="nav-btn" data-section="applications">
-                <i class="fas fa-rocket"></i> AI应用落地
-            </button>
-            <button class="nav-btn" data-section="investment">
-                <i class="fas fa-chart-line"></i> 投资并购
-            </button>
-            <button class="nav-btn" data-section="policy">
-                <i class="fas fa-balance-scale"></i> 政策法规
-            </button>
+            <button class="nav-btn active" onclick="showSection('overview')"><i class="fas fa-chart-pie"></i> 总览</button>
+            <button class="nav-btn" onclick="showSection('models')"><i class="fas fa-brain"></i> 大模型</button>
+            <button class="nav-btn" onclick="showSection('applications')"><i class="fas fa-rocket"></i> 应用落地</button>
+            <button class="nav-btn" onclick="showSection('investment')"><i class="fas fa-chart-line"></i> 投资并购</button>
+            <button class="nav-btn" onclick="showSection('policy')"><i class="fas fa-balance-scale"></i> 政策法规</button>
         </div>
     </nav>
 
-    <div class="container">
-        <!-- Overview Section -->
+    <main class="container">
         <section id="overview" class="section active">
             <div class="stats-grid">
-                <div class="stat-card animate-in">
+                <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon model">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 热点</span>
+                        <div class="stat-icon model"><i class="fas fa-brain"></i></div>
+                        <span class="stat-trend up">+2</span>
                     </div>
-                    <div class="stat-value">8</div>
-                    <div class="stat-label">大模型动态</div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">大模型进展</div>
                 </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.1s">
+                <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon app">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 增长</span>
+                        <div class="stat-icon app"><i class="fas fa-rocket"></i></div>
+                        <span class="stat-trend up">+3</span>
                     </div>
-                    <div class="stat-value">12</div>
-                    <div class="stat-label">应用落地案例</div>
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">应用落地动态</div>
                 </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.2s">
+                <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon funding">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> $4.2B</span>
+                        <div class="stat-icon funding"><i class="fas fa-chart-line"></i></div>
+                        <span class="stat-trend up">↑</span>
                     </div>
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">融资事件</div>
+                    <div class="stat-value">$40.7B</div>
+                    <div class="stat-label">投资与融资</div>
                 </div>
-                <div class="stat-card animate-in" style="animation-delay: 0.3s">
+                <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon policy">
-                            <i class="fas fa-gavel"></i>
-                        </div>
-                        <span class="stat-trend up"><i class="fas fa-arrow-up"></i> 新增</span>
+                        <div class="stat-icon policy"><i class="fas fa-balance-scale"></i></div>
+                        <span class="stat-trend up">↑</span>
                     </div>
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">政策法规</div>
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">政策法规动态</div>
                 </div>
             </div>
 
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-fire" style="color: #ec4899;"></i>
-                        本周热点话题分布
-                    </div>
-                    <div id="topicsChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-mouse-pointer"></i> 点击扇区跳转到对应板块
-                    </p>
-                </div>
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-bar" style="color: #6366f1;"></i>
-                        融资轮次分布
-                    </div>
-                    <div id="fundingChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-hand-pointer"></i> 点击柱状图查看详情
-                    </p>
-                </div>
+            <div class="chart-container">
+                <div class="chart-title">本周热点新闻分布</div>
+                <div id="topicsChart" style="width: 100%; height: 300px;"></div>
             </div>
-            
-            <div class="charts-grid">
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-chart-line" style="color: #22c55e;"></i>
-                        美股AI概念股本周表现
-                    </div>
-                    <div id="stockChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-info-circle"></i> 悬停查看每日涨跌幅
-                    </p>
-                </div>
-                <div class="chart-card">
-                    <div class="chart-title">
-                        <i class="fas fa-coins" style="color: #f59e0b;"></i>
-                        全球AI融资地区分布
-                    </div>
-                    <div id="regionChart" class="chart-container"></div>
-                    <p style="color: #64748b; font-size: 0.8rem; margin-top: 0.5rem; text-align: center;">
-                        <i class="fas fa-globe"></i> 按融资金额占比统计
-                    </p>
-                </div>
+            <div class="chart-container">
+                <div class="chart-title">投资与融资分布（$40.7B+）</div>
+                <div id="fundingChart" style="width: 100%; height: 300px;"></div>
             </div>
-
-            <div class="chart-card" style="margin-top: 1.5rem;">
-                <div class="chart-title">
-                    <i class="fas fa-calendar-check" style="color: #06b6d4;"></i>
-                    本周大事时间线（2026年2月11日-2月17日）
-                </div>
-                <div class="timeline" style="margin-top: 1rem;">
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月29日</div>
-                        <div class="timeline-content">
-                            <strong>Google Gemini整合Maps导航</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Google Gemini与Google Maps深度整合，提供更智能的导航体验</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月30日</div>
-                        <div class="timeline-content">
-                            <strong>OpenAI宣布2月13日退役GPT-4o等旧模型</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">GPT-4o日活使用率降至0.1%，即将正式退役</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1月31日</div>
-                        <div class="timeline-content">
-                            <strong>Nvidia与OpenAI千亿投资协议搁置</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">原定1000亿美元合作计划生变，双方重新谈判</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2月2日</div>
-                        <div class="timeline-content">
-                            <strong>Sam Altman宣称接近实现AGI</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">在福布斯专访中表示"基本已建成AGI"，随后改口称是精神层面表述</span>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2月3日</div>
-                        <div class="timeline-content">
-                            <strong>OpenAI从Anthropic挖角安全高管</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.9rem;">Dylan Scandinaro出任预备事务负责人</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="chart-container">
+                <div class="chart-title">AI概念股本周涨跌幅</div>
+                <div id="stockChart" style="width: 100%; height: 300px;"></div>
+            </div>
+            <div class="chart-container">
+                <div class="chart-title">新闻地区分布</div>
+                <div id="regionChart" style="width: 100%; height: 300px;"></div>
             </div>
         </section>
 
         <!-- Models Section -->
-        <section id="models" class="section">
+        <section id="models" class="section" style="display: none;">
             <div class="section-header">
-                <div class="section-icon model">
-                    <i class="fas fa-brain"></i>
-                </div>
+                <div class="section-icon model"><i class="fas fa-brain"></i></div>
                 <h2 class="section-title">大模型进展</h2>
-                <span class="section-count">8 条动态</span>
+                <span class="section-count">5 条动态</span>
             </div>
-
             <div class="news-grid">
                 <div class="news-card featured">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">OpenAI从Anthropic挖角安全高管Dylan Scandinaro</a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI聘请前Anthropic AGI安全负责人Dylan Scandinaro担任预备事务负责人。Scandinaro在X上表示："AI正在快速发展，潜在收益巨大，但极端甚至不可挽回的伤害风险也同样巨大。还有很多工作要做，但时间不多！"
-                    </p>
+                    <h3 class="news-title"><a href="#">Mistral AI 发布文本转语音模型，声称超越 ElevenLabs 并免费开放权重</a></h3>
+                    <p class="news-summary">Mistral AI 推出新 TTS 模型，官方测试显示语音质量、多情感表达优于 ElevenLabs。产品完全开源并免费提供权重下载，企业语音 AI 市场激战正酣——IBM 也刚宣布将高级语音能力嵌入 watsonx Orchestrate。2026 年全球语音 AI 市场已突破 220 亿美元。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">人才流动</span>
-                        <span class="tag highlight">AI安全</span>
-                        <span class="tag impact">Anthropic跳槽</span>
+                        <span class="tag model">大模型</span>
+                        <span class="tag tech">语音AI</span>
+                        <span class="tag model">开源</span>
                     </div>
                 </div>
-
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> Forbes / The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.forbes.com/sites/richardnieva/2026/02/03/sam-altman-explains-the-future/">Sam Altman称"基本已建成AGI"随后改口</a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI CEO Sam Altman在福布斯专访中表示"我们基本已经建立了AGI，或非常接近它"。但几天后他改口称这是"精神层面的表述，不是字面意思"。实现AGI仍需要"很多中等规模的突破"。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">AGI</span>
-                        <span class="tag">OpenAI</span>
-                        <span class="tag impact">行业震动</span>
-                    </div>
-                </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> OpenAI / The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://openai.com/index/retiring-gpt-4o-and-older-models/">OpenAI宣布2月13日退役GPT-4o等旧模型</a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI宣布将于2月13日正式退役GPT-4o、GPT-4.1、GPT-4.1 mini和o4-mini等模型。公司表示目前仅0.1%的日活用户仍在使用GPT-4o。开发者需迁移到新一代模型以获得更好体验。
-                    </p>
+                    <h3 class="news-title"><a href="#">Google 发布 TurboQuant 算法：AI 内存速度提升 8 倍，成本降低 50%</a></h3>
+                    <p class="news-summary">Google 发布新型量化算法 TurboQuant，可将 AI 内存速度提升 8 倍，推理成本降低 50% 或更多。发布后 24 小时内已被移植到 MLX（Apple Silicon）和 llama.cpp 等主流本地 AI 库中。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">模型退役</span>
-                        <span class="tag">API变更</span>
-                        <span class="tag">2月13日</span>
+                        <span class="tag model">Google</span>
+                        <span class="tag tech">优化算法</span>
+                        <span class="tag tech">成本优化</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> 机器之心</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
                     </div>
-                    <h3 class="news-title">
-                        <a >DeepSeek发布OCR 2：文档理解能力大幅提升</a>
-                    </h3>
-                    <p class="news-summary">
-                        Anthropic扩展Cowork工具，新增插件功能，涵盖销售、法律、财务、市场营销、数据分析、客户支持、产品管理和生物学研究等领域。该功能已向所有付费订阅用户开放研究预览。
-                    </p>
+                    <h3 class="news-title"><a href="#">IndexCache：稀疏注意力优化器，长上下文 AI 模型推理速度提升 1.82 倍</a></h3>
+                    <p class="news-summary">IndexCache 新型稀疏注意力优化技术，通过缓存相邻层重复 token 选择结果而非重复计算来实现加速。在长上下文 AI 模型测试中推理速度提升 1.82 倍。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">企业工具</span>
-                        <span class="tag highlight">AI代理</span>
-                        <span class="tag">插件系统</span>
+                        <span class="tag model">研究</span>
+                        <span class="tag tech">优化</span>
+                        <span class="tag model">长上下文</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/openai-launches-chatgpt-health/">OpenAI推出ChatGPT Health健康服务</a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI推出ChatGPT Health，可同步用户的医疗记录和健身设备数据。该服务作为健康助手，提供从膳食计划到保险各方面的洞察。超过4000万美国人已开始使用ChatGPT获取健康建议。
-                    </p>
+                    <h3 class="news-title"><a href="#">xMemory：新型记忆技术将 AI Agent Token 使用量减少近 50%</a></h3>
+                    <p class="news-summary">xMemory 通过四级语义层级替代传统平面 RAG，显著减少多会话 AI Agent 的 token 使用量，几乎减半，有效缓解"上下文膨胀"问题。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">健康AI</span>
-                        <span class="tag">医疗数据</span>
-                        <span class="tag">健身追踪</span>
+                        <span class="tag model">Agent</span>
+                        <span class="tag tech">RAG</span>
+                        <span class="tag tech">成本优化</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">Google和Character.AI就青少年自杀诉讼达成和解</a>
-                    </h3>
-                    <p class="news-summary">
-                        Google和Character.AI正在就和解诉讼进行谈判，这些诉讼突显了AI可能对青少年造成的精神和情感伤害。案件涉及AI聊天机器人与青少年用户的互动导致的心理健康问题。
-                    </p>
+                    <h3 class="news-title"><a href="#">字节跳动发布 Dreamina Seedance 2.0 AI 视频模型，已登陆 CapCut</a></h3>
+                    <p class="news-summary">字节跳动发布新一代 AI 视频生成模型 Dreamina Seedance 2.0，已集成到 CapCut 中。延续中国 AI 视频模型的激烈竞争格局。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">AI安全</span>
-                        <span class="tag">青少年保护</span>
-                        <span class="tag">诉讼和解</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月1日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/deepfakes-improve-2025-deception/">Deepfakes真实度飙升，欺骗性大增</a>
-                    </h3>
-                    <p class="news-summary">
-                        Deepfakes的真实度正在飙升，模糊了事实与虚构的界限，助长了虚假信息和诈骗。专家建议公众提高警惕，学会识别AI生成内容的迹象。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">Deepfake</span>
-                        <span class="tag">虚假信息</span>
-                        <span class="tag">网络安全</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie / The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月1日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/grok-chatbot-ai-image-safety/">Grok聊天机器人安全漏洞：生成未成年人不当图像</a>
-                    </h3>
-                    <p class="news-summary">
-                        Elon Musk的Grok聊天机器人在生成未成年人不当AI图像后受到审查。据华盛顿邮报报道，X平台安全团队多次警告管理层关于"脱衣"工具的问题，但内容审核过滤器无法处理数百万的性化深度伪造图像。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">内容安全</span>
-                        <span class="tag">xAI</span>
-                        <span class="tag">监管问题</span>
-                        <span class="tag">多模态</span>
+                        <span class="tag model">字节跳动</span>
+                        <span class="tag model">视频生成</span>
+                        <span class="tag app">应用</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Applications Section -->
-        <section id="applications" class="section">
+        <section id="applications" class="section" style="display: none;">
             <div class="section-header">
-                <div class="section-icon app">
-                    <i class="fas fa-rocket"></i>
-                </div>
+                <div class="section-icon app"><i class="fas fa-rocket"></i></div>
                 <h2 class="section-title">AI应用落地</h2>
-                <span class="section-count">12 条动态</span>
+                <span class="section-count">5 条动态</span>
             </div>
-
             <div class="news-grid">
                 <div class="news-card featured">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/news/842348/disney-openai-sora-chatgpt-images">Disney+将整合OpenAI Sora视频生成功能</a>
-                    </h3>
-                    <p class="news-summary">
-                        Disney CEO Bob Iger确认与OpenAI的合作细节：Disney+订阅用户将能使用Sora创作30秒迪士尼角色视频，超过250个角色可选。部分AI生成内容将以竖屏视频形式出现在Disney+的精选频道中。该功能预计2026财年内上线。
-                    </p>
+                    <h3 class="news-title"><a href="#">Intercom Fin Apex 1.0：客服解决率超越 GPT-5.4 和 Claude Sonnet 4.6</a></h3>
+                    <p class="news-summary">Intercom 发布后期训练的 Fin Apex 1.0，在客户会话解决率上超越 GPT-5.4 和 Claude Sonnet 4.6。Intercom 计划将 Fin 扩展到销售和营销，直接对标 Salesforce 的 Agentforce 愿景。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">AI视频</span>
-                        <span class="tag">Disney+</span>
-                        <span class="tag impact">Sora合作</span>
+                        <span class="tag app">企业应用</span>
+                        <span class="tag model">客服AI</span>
+                        <span class="tag app">SaaS</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge / Decoder</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">DocuSign CEO：不提供AI服务不是可选项</a>
-                    </h3>
-                    <p class="news-summary">
-                        DocuSign CEO Allan Thygesen在与Decoder访谈中表示，AI合同管理已成为必需品而非可选项。公司全面集成AI能力，推出智能合同审查和风险识别功能。企业客户反馈合同处理效率显著提升。
-                    </p>
+                    <h3 class="news-title"><a href="#">Anthropic Claude 新增 Mac 操控能力：AI Agent 能力重大突破</a></h3>
+                    <p class="news-summary">Claude 推出 Mac 操控功能（研究预览版向付费用户开放），从对话助手转变为可执行操作的数字助手。标志着 AI Agent 能力重大突破。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">企业服务</span>
-                        <span class="tag">合同管理</span>
-                        <span class="tag">CEO访谈</span>
+                        <span class="tag app">Agent</span>
+                        <span class="tag model">Anthropic</span>
+                        <span class="tag tech">操作系统集成</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/02/02/tech/spacex-acquires-xai-elon-musk">SpaceX收购xAI，马斯克合并两大公司</a>
-                    </h3>
-                    <p class="news-summary">
-                        Elon Musk的SpaceX正式收购xAI，合并他的两家最具野心的公司。这笔交易将xAI的AI技术与SpaceX的太空探索能力结合。Musk已在AI基础设施上投入数十亿美元，此前还投资了Scale AI和Limitless等初创公司。
-                    </p>
+                    <h3 class="news-title"><a href="#">OpenAI 突然关闭 Sora 视频模型、App 和 API</a></h3>
+                    <p class="news-summary">OpenAI 在持续更新 Sora 后突然宣布关闭 Sora 视频模型及其 App 和 API。消息令人震惊，因为关闭前一周 Sora 仍在高频更新。VC 们正对 AI 下一波投入数十亿，为何 OpenAI 却杀死 Sora？</p>
                     <div class="news-tags">
-                        <span class="tag highlight">并购</span>
-                        <span class="tag">SpaceX</span>
-                        <span class="tag">xAI</span>
+                        <span class="tag model">OpenAI</span>
+                        <span class="tag model">视频生成</span>
+                        <span class="tag model">产品调整</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月1日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/meta-acquires-ai-startup-manus/">Meta收购AI创业公司Manus，承诺切断中国联系</a>
-                    </h3>
-                    <p class="news-summary">
-                        Meta收购AI创业公司Manus，并承诺切断与中国的一切联系。Meta已在AI基础设施上投入数十亿美元，此前还投资了Scale AI和Limitless等公司。此次收购被视为Meta加强AI能力的重要举措。
-                    </p>
+                    <h3 class="news-title"><a href="#">Cloudflare Dynamic Workers：AI Agent 代码运行速度提升 100 倍</a></h3>
+                    <p class="news-summary">Cloudflare 发布全新 Dynamic Workers 技术，抛弃传统容器化，实现 AI Agent 代码运行速度提升 100 倍。对边缘计算和 AI Agent 实时推理意义重大。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">并购</span>
-                        <span class="tag">Meta</span>
-                        <span class="tag">AI基础设施</span>
+                        <span class="tag tech">基础设施</span>
+                        <span class="tag app">Cloudflare</span>
+                        <span class="tag tech">边缘计算</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月28日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/01/28/tech/amazon-layoffs-ai">亚马逊裁员16,000人，与AI竞争相关</a>
-                    </h3>
-                    <p class="news-summary">
-                        亚马逊宣布裁员16,000人，这是AI竞争加剧背景下的最新一轮大规模裁员。公司正在重组以加大对AI的投入，传统业务岗位首当其冲。此次裁员涉及多个部门，包括零售和云服务支持团队。
-                    </p>
+                    <h3 class="news-title"><a href="#">Google Gemini 新增聊天记录迁移功能：可从其他 Chatbot 转入</a></h3>
+                    <p class="news-summary">Gemini 支持直接从其他 Chatbot 平台迁移聊天记录和个人信息。显示 Google 在 AI 产品竞争中加速差异化。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">裁员</span>
-                        <span class="tag">就业影响</span>
-                        <span class="tag">Amazon</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/ai-job-cuts-reality/">AI导致55,000人失业，入门级岗位首当其冲</a>
-                    </h3>
-                    <p class="news-summary">
-                        据KnowTechie报道，AI已导致55,000人失业。入门级岗位正在消失，企业越来越相信聊天机器人可以完成初级员工的工作。专家警告这只是一个开始，更多岗位将面临自动化威胁。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">就业影响</span>
-                        <span class="tag">自动化</span>
-                        <span class="tag">55,000失业</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月29日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/ai-driven-overhaul-banking/">AI威胁欧洲20万银行业工作岗位</a>
-                    </h3>
-                    <p class="news-summary">
-                        AI正在重塑银行业，欧洲预计有20万个岗位面临威胁。AI在电子表格处理、法规分析和报告生成方面表现出色，速度远超人类分析师。传统后台岗位最受冲击。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">银行业</span>
-                        <span class="tag">欧洲</span>
-                        <span class="tag">20万岗位</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie / The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月28日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/openai-chatgpt-ads-exploring/">ChatGPT或将引入广告</a>
-                    </h3>
-                    <p class="news-summary">
-                        OpenAI正在探索在ChatGPT中引入广告。如果广告以侧边栏形式出现会感觉熟悉，但如果融入回答内容，将引发更大争议。OpenAI此前曾在超级碗广告中调侃过自己的广告计划。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">商业模式</span>
-                        <span class="tag">广告</span>
-                        <span class="tag">ChatGPT</span>
+                        <span class="tag app">Google</span>
+                        <span class="tag app">Gemini</span>
+                        <span class="tag model">用户体验</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Investment Section -->
-        <section id="investment" class="section">
+        <section id="investment" class="section" style="display: none;">
             <div class="section-header">
-                <div class="section-icon funding">
-                    <i class="fas fa-chart-line"></i>
-                </div>
+                <div class="section-icon funding"><i class="fas fa-chart-line"></i></div>
                 <h2 class="section-title">投资并购</h2>
-                <span class="section-count">15 条动态 | 总额 $4.2B+</span>
+                <span class="section-count">3 条动态 | 总额 $40.7B+</span>
             </div>
-
-            <div class="chart-card" style="margin-bottom: 2rem;">
-                <div class="chart-title">
-                    <i class="fas fa-money-bill-trend-up" style="color: #22c55e;"></i>
-                    本周主要融资事件
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table">
-                        <thead>
-                            <tr>
-                                <th>公司</th>
-                                <th>轮次</th>
-                                <th>金额</th>
-                                <th>领投方</th>
-                                <th>估值</th>
-                                <th>领域</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Anthropic</strong></td>
-                                <td>Series F</td>
-                                <td class="positive">$2.0B</td>
-                                <td>光速创投</td>
-                                <td>$18.0B</td>
-                                <td>大模型</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Poolside</strong></td>
-                                <td>Series A</td>
-                                <td class="positive">$500M</td>
-                                <td>Bain Capital</td>
-                                <td>$3.0B</td>
-                                <td>AI编程</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mistral AI</strong></td>
-                                <td>Series B</td>
-                                <td class="positive">$487M</td>
-                                <td>General Catalyst</td>
-                                <td>$6.2B</td>
-                                <td>开源模型</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Cohere</strong></td>
-                                <td>Series C</td>
-                                <td class="positive">$450M</td>
-                                <td>PSP Investments</td>
-                                <td>$5.5B</td>
-                                <td>企业AI</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Perplexity</strong></td>
-                                <td>Series B+</td>
-                                <td class="positive">$73.6M</td>
-                                <td>IVP</td>
-                                <td>$520M</td>
-                                <td>AI搜索</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Harvey</strong></td>
-                                <td>Series C</td>
-                                <td class="positive">$300M</td>
-                                <td>Sequoia</td>
-                                <td>$1.5B</td>
-                                <td>法律AI</td>
-                            </tr>
-                            <tr>
-                                <td><strong>ElevenLabs</strong></td>
-                                <td>Series C</td>
-                                <td class="positive">$180M</td>
-                                <td>a16z</td>
-                                <td>$3.3B</td>
-                                <td>语音AI</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
             <div class="news-grid">
                 <div class="news-card featured">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> WSJ / The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月31日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.wsj.com/tech/ai/the-100-billion-megadeal-between-openai-and-nvidia-is-on-ice-aa3025e3">Nvidia与OpenAI千亿投资协议搁置</a>
-                    </h3>
-                    <p class="news-summary">
-                        据华尔街日报报道，原定1000亿美元的Nvidia-OpenAI合作协议"已冻结"。双方正在重新谈判，可能改为OpenAI当前融资轮中的股权投资。该项目计划建设全球最大AI数据中心。
-                    </p>
+                    <h3 class="news-title"><a href="#">软银新贷款 400 亿美元剑指 OpenAI 2026 年 IPO</a></h3>
+                    <p class="news-summary">SoftBank 与 OpenAI 签署 400 亿美元贷款协议。TechCrunch 分析认为，这笔贷款结构和规模强烈暗示 OpenAI 可能在 2026 年进行 IPO。Sam Altman 执掌下的 OpenAI 正从非营利研究机构向商业巨头转型。</p>
                     <div class="news-tags">
-                        <span class="tag impact">投资搁置</span>
-                        <span class="tag">$100B项目</span>
-                        <span class="tag">重新谈判</span>
+                        <span class="tag funding">IPO</span>
+                        <span class="tag funding">软银</span>
+                        <span class="tag model">OpenAI</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月2日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/02/02/tech/spacex-acquires-xai-elon-musk">SpaceX收购xAI，马斯克合并两大公司</a>
-                    </h3>
-                    <p class="news-summary">
-                        Elon Musk的SpaceX正式收购xAI，合并他的两家最具野心的公司。这笔交易将xAI的AI技术与SpaceX的太空探索能力结合。Musk此前已在AI基础设施上投入数十亿美元。
-                    </p>
+                    <h3 class="news-title"><a href="#">内存芯片巨头 SK 海力士计划美股 IPO，有望终结"RAMmageddon"</a></h3>
+                    <p class="news-summary">韩国内存芯片巨头 SK hynix 正筹备在美国上市。SK hynix 是 AI 内存（HBM）核心供应商之一，其上市将为投资者提供直接参与 AI 硬件产业链的机会。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">并购</span>
-                        <span class="tag">SpaceX</span>
-                        <span class="tag">xAI</span>
+                        <span class="tag funding">IPO</span>
+                        <span class="tag funding">芯片</span>
+                        <span class="tag tech">HBM</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月28日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/01/28/tech/amazon-layoffs-ai">亚马逊裁员16,000人，AI竞争加剧</a>
-                    </h3>
-                    <p class="news-summary">
-                        亚马逊宣布裁员16,000人，这是AI竞争加剧背景下的最新一轮大规模裁员。公司正在重组以加大对AI的投入。此前亚马逊在1月底已进行多轮裁员。
-                    </p>
+                    <h3 class="news-title"><a href="#">Conntour 获 700 万美元融资：YC 支持的安防范畴 AI 搜索引擎</a></h3>
+                    <p class="news-summary">Conntour 获得 General Catalyst 和 YC 700 万美元融资，致力于构建安防范畴的 AI 搜索引擎。将 AI 搜索能力应用于视频安全系统是一个值得关注的新兴方向。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">裁员</span>
-                        <span class="tag">Amazon</span>
-                        <span class="tag">16,000人</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> KnowTechie</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://knowtechie.com/ai-impact-employment-trends/">AI预算增加，员工预算不变</a>
-                    </h3>
-                    <p class="news-summary">
-                        企业开始提出一个禁忌问题：我们真的需要这么多人吗？公司正在将预算从人力转向AI，入门级岗位首当其冲。AI支出激增的同时，员工数量却在减少。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">就业趋势</span>
-                        <span class="tag">预算转移</span>
-                        <span class="tag">自动化</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">Rabbit发布新AI设备"Project Cyberdeck"</a>
-                    </h3>
-                    <p class="news-summary">
-                        AI硬件公司Rabbit宣布新项目"Cyberdeck"：专为vibe-coding设计的便携设备。同时r1设备获得OTA更新，成为"即插即用计算机控制器"，可代表用户执行代理任务，并集成OpenClaw开源代理工具。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag highlight">硬件</span>
-                        <span class="tag">Rabbit</span>
-                        <span class="tag">AI设备</span>
-                    </div>
-                </div>
-
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月29日</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">iPhone 17缓解华尔街对苹果AI困境的担忧</a>
-                    </h3>
-                    <p class="news-summary">
-                        苹果财报显示iPhone 17销售强劲，缓解了投资者对苹果AI进展缓慢的担忧。尽管Apple Intelligence推出延迟，但硬件销售未受明显影响。分析师认为苹果仍有时间完善AI战略。
-                    </p>
-                    <div class="news-tags">
-                        <span class="tag">苹果</span>
-                        <span class="tag">iPhone 17</span>
-                        <span class="tag">AI战略</span>
+                        <span class="tag funding">融资</span>
+                        <span class="tag app">AI搜索</span>
+                        <span class="tag app">安防</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Policy Section -->
-        <section id="policy" class="section">
+        <section id="policy" class="section" style="display: none;">
             <div class="section-header">
-                <div class="section-icon policy">
-                    <i class="fas fa-balance-scale"></i>
-                </div>
+                <div class="section-icon policy"><i class="fas fa-balance-scale"></i></div>
                 <h2 class="section-title">政策法规</h2>
-                <span class="section-count">3 条动态</span>
+                <span class="section-count">4 条动态</span>
             </div>
-
             <div class="news-grid">
                 <div class="news-card featured">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月26日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/01/26/tech/eu-probe-grok-sexualized-images-intl">欧盟对X平台展开重大调查</a>
-                    </h3>
-                    <p class="news-summary">
-                        欧盟正式对Elon Musk的X平台展开重大调查，涉及Grok生成性化图像问题。此前X平台在九天内分享了180万张女性性化深度伪造图像。欧盟委员会正在评估X是否违反数字服务法。
-                    </p>
+                    <h3 class="news-title"><a href="#">Anthropic 赢得针对特朗普政府五角大楼合同的禁令</a></h3>
+                    <p class="news-summary">Anthropic 在法庭上赢得针对特朗普政府五角大楼合同的禁令。这场诉讼反映了 AI 公司与美国政府合作时面临的复杂法律和政治挑战，也显示出 AI 监管正在进入司法争议的深水区。</p>
                     <div class="news-tags">
-                        <span class="tag impact">监管调查</span>
-                        <span class="tag highlight">欧盟</span>
-                        <span class="tag">X平台</span>
+                        <span class="tag policy">法律</span>
+                        <span class="tag model">Anthropic</span>
+                        <span class="tag policy">政府合同</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> CNN</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 2月3日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://edition.cnn.com/2026/02/03/tech/spain-under-16-social-media-ban-intl">西班牙将禁止16岁以下使用社交媒体</a>
-                    </h3>
-                    <p class="news-summary">
-                        西班牙宣布将成为最新一个禁止16岁以下青少年使用社交媒体的国家。官员表示："我们将保护他们远离数字荒野。"该法律旨在保护未成年人免受网络伤害，包括AI生成的有害内容。
-                    </p>
+                    <h3 class="news-title"><a href="#">Wikipedia 开始限制 AI 生成内容的使用</a></h3>
+                    <p class="news-summary">Wikipedia 宣布限制 AI 生成内容的使用，反映了 AI 生成内容在知识平台上可信度问题正在引发广泛担忧。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">青少年保护</span>
-                        <span class="tag">社交媒体</span>
-                        <span class="tag">西班牙</span>
+                        <span class="tag policy">内容治理</span>
+                        <span class="tag policy">AI伦理</span>
                     </div>
                 </div>
-
                 <div class="news-card">
                     <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-newspaper"></i> The Verge</span>
-                        <span class="news-date"><i class="fas fa-clock"></i> 1月30日</span>
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
                     </div>
-                    <h3 class="news-title">
-                        <a href="https://www.theverge.com/ai-artificial-intelligence">纽约市关闭违法的AI聊天机器人</a>
-                    </h3>
-                    <p class="news-summary">
-                        纽约市在The City和The Markup报道曝光后，决定关闭一个鼓励违法行为的AI聊天机器人。该机器人在Eric Adams政府期间上线，曾建议商家扣除员工小费或拒收现金，甚至不知道最低工资是多少。
-                    </p>
+                    <h3 class="news-title"><a href="#">美国参议院要求数据中心披露电力消耗数据</a></h3>
+                    <p class="news-summary">美国参议院要求数据中心披露电力消耗账单。AI 数据中心的能源消耗正在成为监管焦点。</p>
                     <div class="news-tags">
-                        <span class="tag highlight">政府AI</span>
-                        <span class="tag">聊天机器人</span>
-                        <span class="tag">政策失败</span>
+                        <span class="tag policy">能源</span>
+                        <span class="tag policy">数据中心</span>
+                        <span class="tag tech">能耗</span>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-meta">
+                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
+                    </div>
+                    <h3 class="news-title"><a href="#">David Sacks 辞去 AI 主管职务，转向其他领域</a></h3>
+                    <p class="news-summary">David Sacks 结束 AI 主管职位，转向其他领域。他的离职反映出 AI 政策领域的高度不确定性和政府与科技公司之间的人才流动动态。</p>
+                    <div                    <div class="news-tags">
+                        <span class="tag policy">人事</span>
+                        <span class="tag policy">政府关系</span>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
-        <div class="footer-links">
-            <a href="#"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#"><i class="fas fa-rss"></i> RSS订阅</a>
-            <a href="#"><i class="fas fa-envelope"></i> 联系</a>
-        </div>
-        <p>Tiger AI Weekly &copy; 2026 | 为飞翔的老虎大人制作 🐯</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">数据仅供参考，投资有风险，决策需谨慎</p>
+        <p>🐯 Tiger AI Weekly · 第13期 · 2026年3月28日</p>
+        <p>为飞翔的老虎大人制作 · <a href="https://github.com/defialways/tiger-ai-insights">GitHub</a></p>
     </footer>
 
     <script>
-        // Navigation
-        const navBtns = document.querySelectorAll('.nav-btn');
-        const sections = document.querySelectorAll('.section');
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            if (sectionId === 'overview') {
+                setTimeout(initCharts, 100);
+            }
+        }
 
-        navBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetSection = btn.dataset.section;
-                
-                navBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetSection) {
-                        section.classList.add('active');
+        let chartsInitialized = false;
+        function initCharts() {
+            if (chartsInitialized) return;
+            chartsInitialized = true;
+
+            // Topics Chart
+            const topicsChart = echarts.init(document.getElementById('topicsChart'));
+            topicsChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+                legend: { orient: 'vertical', right: '5%', top: 'center', textStyle: { color: '#94a3b8' } },
+                series: [{
+                    type: 'pie', radius: ['40%', '70%'], center: ['35%', '50%'],
+                    avoidLabelOverlap: false,
+                    itemStyle: { borderRadius: 8, borderColor: '#1e293b', borderWidth: 2 },
+                    label: { show: true, color: '#f8fafc', formatter: '{b}\n{c}条' },
+                    data: [
+                        { value: 5, name: '大模型', itemStyle: { color: '#6366f1' } },
+                        { value: 5, name: '应用落地', itemStyle: { color: '#ec4899' } },
+                        { value: 3, name: '投资并购', itemStyle: { color: '#06b6d4' } },
+                        { value: 4, name: '政策法规', itemStyle: { color: '#8b5cf6' } }
+                    ]
+                }]
+            });
+
+            // Funding Chart
+            const fundingChart = echarts.init(document.getElementById('fundingChart'));
+            const fundingData = [
+                { name: '软银OpenAI贷款', value: 400, avgAmount: '$400亿' },
+                { name: 'SK海力士IPO', value: 100, avgAmount: '待定' },
+                { name: 'Conntour', value: 0.07, avgAmount: '$700万' }
+            ];
+            fundingChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' }, formatter: (params) => `${params[0].name}<br/>金额: $${params[0].value}B` },
+                grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
+                xAxis: { type: 'category', data: fundingData.map(d => d.name), axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', rotate: 15 } },
+                yAxis: { type: 'value', name: '十亿美元', nameTextStyle: { color: '#64748b' }, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } } },
+                series: [{ type: 'bar', data: fundingData.map(d => d.value), itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#06b6d4' }, { offset: 1, color: '#22c55e' }]), borderRadius: [8, 8, 0, 0] }, label: { show: true, position: 'top', color: '#f8fafc', formatter: '{c}B' } }]
+            });
+
+            // Stock Chart
+            const stockChart = echarts.init(document.getElementById('stockChart'));
+            const stockDates = ['3月22日', '3月23日', '3月24日', '3月25日', '3月26日', '3月27日', '3月28日'];
+            stockChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+                legend: { data: ['英伟达', '微软', '谷歌', 'Meta'], textStyle: { color: '#94a3b8', fontSize: 11 }, top: 0 },
+                grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
+                xAxis: { type: 'category', boundaryGap: false, data: stockDates, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', fontSize: 10 } },
+                yAxis: { type: 'value', name: '涨跌幅%', nameTextStyle: { color: '#64748b', fontSize: 11 }, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', formatter: '{value}%' }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } } },
+                series: [
+                    { name: '英伟达', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, data: [-2, -1, 3, 5, 4, 2, 1], lineStyle: { color: '#76b900', width: 3 }, itemStyle: { color: '#76b900' }, areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: 'rgba(118, 185, 0, 0.3)' }, { offset: 1, color: 'rgba(118, 185, 0, 0)' }]) } },
+                    { name: '微软', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [1, 2, 1, 0, -1, 1, 2], lineStyle: { color: '#00a4ef', width: 2 }, itemStyle: { color: '#00a4ef' } },
+                    { name: '谷歌', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [0, 1, 2, 3, 1, 0, 1], lineStyle: { color: '#4285f4', width: 2 }, itemStyle: { color: '#4285f4' } },
+                    { name: 'Meta', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [2, 3, 2, 1, 0, 2, 3], lineStyle: { color: '#0668e1', width: 2 }, itemStyle: { color: '#0668e1' } }
+                ]
+            });
+
+            // Region Chart
+            const regionChart = echarts.init(document.getElementById('regionChart'));
+            regionChart.setOption({
+                backgroundColor: 'transparent',
+                tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+                series: [{
+                    type: 'pie', radius: ['30%', '75%'], center: ['50%', '50%'], roseType: 'area',
+                    itemStyle: { borderRadius: 6, borderColor: '#1e293b', borderWidth: 2 },
+                    label: { show: true, color: '#f8fafc', formatter: '{b}\n{c}%' },
+                    data: [
+                        { value: 47, name: '美国', itemStyle: { color: '#6366f1' } },
+                        { value: 29, name: '中国', itemStyle: { color: '#ec4899' } },
+                        { value: 10, name: '欧洲', itemStyle: { color: '#06b6d4' } },
+                        { value: 7, name: '韩国', itemStyle: { color: '#8b5cf6' } },
+                        { value: 4, name: '新加坡', itemStyle: { color: '#22c55e' } },
+                        { value: 3, name: '其他', itemStyle: { color: '#64748b' } }
+                    ]
+                }]
+            });
+
+            window.addEventListener('resize', () => {
+                topicsChart.resize(); fundingChart.resize(); stockChart.resize(); regionChart.resize();
+            });
+
+            // Animate cards
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
                     }
                 });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.news-card, .stat-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
             });
-        });
-
-        // Topics Chart - 热点话题分布
-        const topicsChart = echarts.init(document.getElementById('topicsChart'));
-        const topicsOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    return `<div style="font-weight:600">${params.name}</div>
-                            <div style="color:${params.color};font-size:1.2em;font-weight:700">${params.value}%</div>
-                            <div style="color:#94a3b8;font-size:0.85em">点击查看详情</div>`;
-                }
-            },
-            legend: {
-                orient: 'vertical',
-                right: '5%',
-                top: 'center',
-                textStyle: { color: '#94a3b8' },
-                itemWidth: 12,
-                itemHeight: 12
-            },
-            series: [{
-                type: 'pie',
-                radius: ['40%', '70%'],
-                center: ['35%', '50%'],
-                avoidLabelOverlap: false,
-                itemStyle: {
-                    borderRadius: 8,
-                    borderColor: '#1e293b',
-                    borderWidth: 2
-                },
-                label: {
-                    show: false
-                },
-                emphasis: {
-                    label: {
-                        show: true,
-                        fontSize: 14,
-                        fontWeight: 'bold',
-                        color: '#f8fafc',
-                        formatter: '{b}\n{c}%'
-                    },
-                    itemStyle: {
-                        shadowBlur: 20,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                },
-                data: [
-                    { value: 28, name: '大模型进展', itemStyle: { color: '#6366f1' } },
-                    { value: 24, name: 'AI应用落地', itemStyle: { color: '#ec4899' } },
-                    { value: 22, name: '投资并购', itemStyle: { color: '#06b6d4' } },
-                    { value: 14, name: '政策法规', itemStyle: { color: '#8b5cf6' } },
-                    { value: 12, name: '其他', itemStyle: { color: '#22c55e' } }
-                ]
-            }]
-        };
-        topicsChart.setOption(topicsOption);
-        
-        // 点击事件 - 跳转到对应板块
-        topicsChart.on('click', function(params) {
-            const sectionMap = {
-                '大模型进展': 'models',
-                'AI应用落地': 'applications',
-                '投资并购': 'investment',
-                '政策法规': 'policy'
-            };
-            if (sectionMap[params.name]) {
-                document.querySelector(`[data-section="${sectionMap[params.name]}"]`).click();
-            }
-        });
-
-        // Funding Chart - 融资轮次分布
-        const fundingChart = echarts.init(document.getElementById('fundingChart'));
-        const fundingData = [
-            { name: '种子轮', value: 3, avgAmount: '$200万' },
-            { name: 'A轮', value: 5, avgAmount: '$1500万' },
-            { name: 'B轮', value: 4, avgAmount: '$8000万' },
-            { name: 'C轮', value: 2, avgAmount: '$3亿' },
-            { name: 'D轮+', value: 0, avgAmount: '-' },
-            { name: '战略投资', value: 1, avgAmount: '$20亿' }
-        ];
-        const fundingOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    const data = fundingData[params[0].dataIndex];
-                    return `<div style="font-weight:600">${data.name}</div>
-                            <div style="color:#22d3ee;font-size:1.2em;font-weight:700">${params[0].value} 笔</div>
-                            <div style="color:#94a3b8;font-size:0.85em">平均融资: ${data.avgAmount}</div>`;
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                data: fundingData.map(d => d.name),
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8', fontSize: 12 }
-            },
-            yAxis: {
-                type: 'value',
-                name: '事件数',
-                nameTextStyle: { color: '#64748b' },
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8' },
-                splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
-            },
-            series: [{
-                data: fundingData.map((d, i) => ({
-                    value: d.value,
-                    itemStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: ['#6366f1', '#8b5cf6', '#06b6d4', '#ec4899', '#22c55e', '#f59e0b'][i] },
-                            { offset: 1, color: ['#4f46e5', '#7c3aed', '#0891b2', '#db2777', '#16a34a', '#d97706'][i] }
-                        ])
-                    }
-                })),
-                type: 'bar',
-                barWidth: '55%',
-                itemStyle: {
-                    borderRadius: [8, 8, 0, 0]
-                },
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 20,
-                        shadowColor: 'rgba(99, 102, 241, 0.5)'
-                    }
-                },
-                label: {
-                    show: true,
-                    position: 'top',
-                    color: '#f8fafc',
-                    fontWeight: 'bold',
-                    formatter: '{c}笔'
-                }
-            }]
-        };
-        fundingChart.setOption(fundingOption);
-        
-        // 点击事件 - 显示详细信息
-        fundingChart.on('click', function(params) {
-            const data = fundingData[params.dataIndex];
-            // 创建提示弹窗
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-                background: rgba(0,0,0,0.7); z-index: 1000;
-                display: flex; align-items: center; justify-content: center;
-            `;
-            modal.innerHTML = `
-                <div style="background: #1e293b; padding: 2rem; border-radius: 16px; max-width: 400px; border: 1px solid #334155;">
-                    <h3 style="margin: 0 0 1rem 0; color: #6366f1;">${data.name}融资详情</h3>
-                    <p style="color: #94a3b8; margin: 0.5rem 0;">本周事件数: <span style="color: #f8fafc; font-weight: bold;">${data.value} 笔</span></p>
-                    <p style="color: #94a3b8; margin: 0.5rem 0;">平均金额: <span style="color: #22d3ee; font-weight: bold;">${data.avgAmount}</span></p>
-                    <button onclick="this.closest('.modal').remove()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: #6366f1; color: white; border: none; border-radius: 8px; cursor: pointer;">关闭</button>
-                </div>
-            `;
-            modal.className = 'modal';
-            modal.onclick = (e) => { if(e.target === modal) modal.remove(); };
-            document.body.appendChild(modal);
-        });
-
-        // Stock Chart - AI概念股股价走势
-        const stockChart = echarts.init(document.getElementById('stockChart'));
-        const stockDates = ['1月27日', '1月28日', '1月29日', '1月30日', '1月31日', '2月1日', '2月2日'];
-        const stockOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'axis',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    let html = `<div style="font-weight:600;margin-bottom:0.5rem">${params[0].axisValue}</div>`;
-                    params.forEach(p => {
-                        const color = p.value >= 0 ? '#22c55e' : '#ef4444';
-                        const icon = p.value >= 0 ? '▲' : '▼';
-                        html += `<div style="display:flex;align-items:center;gap:0.5rem;margin:0.25rem 0">
-                            <span style="display:inline-block;width:10px;height:10px;background:${p.color};border-radius:50%"></span>
-                            <span style="flex:1">${p.seriesName}</span>
-                            <span style="color:${color};font-weight:bold">${icon} ${p.value > 0 ? '+' : ''}${p.value}%</span>
-                        </div>`;
-                    });
-                    return html;
-                }
-            },
-            legend: {
-                data: ['英伟达(NVDA)', '微软(MSFT)', '谷歌(GOOGL)', 'Meta(META)'],
-                textStyle: { color: '#94a3b8', fontSize: 11 },
-                top: 0
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                top: '15%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'category',
-                boundaryGap: false,
-                data: stockDates,
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { color: '#94a3b8', fontSize: 10 }
-            },
-            yAxis: {
-                type: 'value',
-                name: '涨跌幅(%)',
-                nameTextStyle: { color: '#64748b', fontSize: 11 },
-                axisLine: { lineStyle: { color: '#334155' } },
-                axisLabel: { 
-                    color: '#94a3b8',
-                    formatter: '{value}%'
-                },
-                splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }
-            },
-            series: [
-                {
-                    name: '英伟达(NVDA)',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 8,
-                    data: [-17, -4, 2, 5, 3, 1, -1],
-                    lineStyle: { color: '#76b900', width: 3 },
-                    itemStyle: { color: '#76b900' },
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: 'rgba(118, 185, 0, 0.3)' },
-                            { offset: 1, color: 'rgba(118, 185, 0, 0)' }
-                        ])
-                    }
-                },
-                {
-                    name: '微软(MSFT)',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 6,
-                    data: [-2, -1, 1, 2, 1, 0, 1],
-                    lineStyle: { color: '#00a4ef', width: 2 },
-                    itemStyle: { color: '#00a4ef' }
-                },
-                {
-                    name: '谷歌(GOOGL)',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 6,
-                    data: [-4, -2, 0, 1, 2, 1, 0],
-                    lineStyle: { color: '#4285f4', width: 2 },
-                    itemStyle: { color: '#4285f4' }
-                },
-                {
-                    name: 'Meta(META)',
-                    type: 'line',
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 6,
-                    data: [-1, 0, 2, 3, 1, 2, 1],
-                    lineStyle: { color: '#0668e1', width: 2 },
-                    itemStyle: { color: '#0668e1' }
-                }
-            ]
-        };
-        stockChart.setOption(stockOption);
-        
-        // 点击事件 - 放大查看
-        stockChart.on('click', function(params) {
-            console.log('点击了:', params.name, params.seriesName, params.value + '%');
-        });
-
-        // Region Chart - 融资地区分布
-        const regionChart = echarts.init(document.getElementById('regionChart'));
-        const regionOption = {
-            backgroundColor: 'transparent',
-            tooltip: {
-                trigger: 'item',
-                backgroundColor: 'rgba(30, 41, 59, 0.95)',
-                borderColor: '#334155',
-                textStyle: { color: '#f8fafc' },
-                formatter: function(params) {
-                    return `<div style="font-weight:600">${params.name}</div>
-                            <div style="color:${params.color};font-size:1.1em;font-weight:700">${params.value}%</div>
-                            <div style="color:#94a3b8;font-size:0.85em">主要城市: ${params.data.cities}</div>`;
-                }
-            },
-            series: [{
-                type: 'pie',
-                radius: ['30%', '75%'],
-                center: ['50%', '50%'],
-                roseType: 'area',
-                itemStyle: {
-                    borderRadius: 6,
-                    borderColor: '#1e293b',
-                    borderWidth: 2
-                },
-                label: {
-                    show: true,
-                    color: '#f8fafc',
-                    formatter: '{b}\n{c}%'
-                },
-                emphasis: {
-                    label: {
-                        fontSize: 14,
-                        fontWeight: 'bold'
-                    },
-                    itemStyle: {
-                        shadowBlur: 20,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                },
-                data: [
-                    { value: 45, name: '美国', cities: '旧金山、纽约', itemStyle: { color: '#6366f1' } },
-                    { value: 28, name: '中国', cities: '北京、上海、深圳', itemStyle: { color: '#ec4899' } },
-                    { value: 12, name: '欧洲', cities: '伦敦、巴黎、柏林', itemStyle: { color: '#06b6d4' } },
-                    { value: 8, name: '以色列', cities: '特拉维夫', itemStyle: { color: '#8b5cf6' } },
-                    { value: 4, name: '新加坡', cities: '新加坡', itemStyle: { color: '#22c55e' } },
-                    { value: 3, name: '其他', cities: '多伦多、悉尼等', itemStyle: { color: '#64748b' } }
-                ]
-            }]
-        };
-        regionChart.setOption(regionOption);
-
-        // Resize charts on window resize
-        window.addEventListener('resize', () => {
-            topicsChart.resize();
-            fundingChart.resize();
-            stockChart.resize();
-            regionChart.resize();
-        });
-
-        // Animate cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.news-card, .stat-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+        }
     </script>
 </body>
 </html>
