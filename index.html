@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiger AI Weekly - AI行业周报 第13期</title>
+    <title>Tiger AI Weekly - 第14期 AI周报</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -25,754 +25,420 @@
             --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', 'Noto Sans SC', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        .bg-animation {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-        }
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        header {
-            padding: 2rem 0;
-            text-align: center;
-            position: relative;
-        }
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .logo-icon {
-            width: 60px; height: 60px;
-            background: var(--gradient-1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: var(--shadow);
-        }
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .tagline {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .issue-info {
-            display: inline-flex;
-            align-items: center;
-            gap: 1.5rem;
-            background: var(--bg-card);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            border: 1px solid var(--border);
-        }
-        .issue-info span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: var(--bg-dark); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%); }
+        .bg-animation::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px); background-size: 50px 50px; }
+        header { padding: 2rem 0; text-align: center; position: relative; }
+        .logo { display: inline-flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .logo-icon { width: 60px; height: 60px; background: var(--gradient-1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: var(--shadow); }
+        .logo-text { font-size: 2rem; font-weight: 700; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tagline { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1rem; }
+        .issue-info { display: inline-flex; align-items: center; gap: 1.5rem; background: var(--bg-card); padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 0.9rem; border: 1px solid var(--border); }
+        .issue-info span { display: flex; align-items: center; gap: 0.5rem; }
         .issue-info i { color: var(--primary); }
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .nav-btn {
-            padding: 0.6rem 1.2rem;
-            border: none;
-            background: transparent;
-            color: var(--text-secondary);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .nav-btn:hover, .nav-btn.active {
-            background: var(--bg-card);
-            color: var(--text-primary);
-        }
-        .nav-btn.active {
-            background: var(--gradient-1);
-            color: white;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        .stat-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: var(--gradient-1);
-        }
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-        }
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        .stat-icon {
-            width: 48px; height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
+        nav { position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); z-index: 100; border-bottom: 1px solid var(--border); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+        .nav-btn { padding: 0.6rem 1.2rem; border: none; background: transparent; color: var(--text-secondary); border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; }
+        .nav-btn:hover, .nav-btn.active { background: var(--bg-card); color: var(--text-primary); }
+        .nav-btn.active { background: var(--gradient-1); color: white; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-1); }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+        .stat-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
         .stat-icon.model { background: rgba(99, 102, 241, 0.2); color: #6366f1; }
         .stat-icon.app { background: rgba(236, 72, 153, 0.2); color: #ec4899; }
         .stat-icon.funding { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
         .stat-icon.policy { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
-        .stat-trend {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            font-weight: 500;
-        }
+        .stat-trend { font-size: 0.8rem; padding: 0.25rem 0.5rem; border-radius: 20px; font-weight: 500; }
         .stat-trend.up { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
         .stat-value { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
         .stat-label { color: var(--text-secondary); font-size: 0.9rem; }
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin: 3rem 0 1.5rem 0;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--border);
-        }
-        .section-icon {
-            width: 50px; height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-        }
+        .section-header { display: flex; align-items: center; gap: 1rem; margin: 3rem 0 1.5rem 0; padding-bottom: 1rem; border-bottom: 2px solid var(--border); }
+        .section-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
         .section-icon.model { background: var(--gradient-1); }
         .section-icon.app { background: var(--gradient-2); }
         .section-icon.funding { background: linear-gradient(135deg, #06b6d4 0%, #22c55e 100%); }
         .section-icon.policy { background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%); }
         .section-title { font-size: 1.5rem; font-weight: 600; }
-        .section-count {
-            margin-left: auto;
-            background: var(--bg-card);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 1.5rem;
-        }
-        .news-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .news-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.3);
-        }
-        .news-card.featured {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(99, 102, 241, 0.1) 100%);
-        }
-        .news-card.featured::before {
-            content: 'Featured';
-            position: absolute;
-            top: -1px; right: 20px;
-            background: var(--gradient-1);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 0 0 8px 8px;
-        }
-        .news-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
+        .section-count { margin-left: auto; background: var(--bg-card); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.85rem; color: var(--text-secondary); border: 1px solid var(--border); }
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 1.5rem; }
+        .news-card { background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); transition: all 0.3s ease; position: relative; }
+        .news-card:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 10px 40px -10px rgba(99, 102, 241, 0.3); }
+        .news-card.featured { border-color: var(--primary); background: linear-gradient(135deg, var(--bg-card) 0%, rgba(99, 102, 241, 0.1) 100%); }
+        .news-card.featured::before { content: 'Featured'; position: absolute; top: -1px; right: 20px; background: var(--gradient-1); color: white; padding: 0.25rem 0.75rem; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 0 0 8px 8px; }
+        .news-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; font-size: 0.8rem; color: var(--text-secondary); }
         .news-source, .news-date { display: flex; align-items: center; gap: 0.4rem; }
         .news-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; }
         .news-title a { color: var(--text-primary); text-decoration: none; transition: color 0.3s ease; }
         .news-title a:hover { color: var(--primary); }
         .news-summary { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6; }
         .news-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tag {
-            padding: 0.3rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-        }
+        .tag { padding: 0.3rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 500; border: 1px solid var(--border); }
         .tag.model { background: rgba(99, 102, 241, 0.2); color: #818cf8; border-color: rgba(99, 102, 241, 0.3); }
         .tag.app { background: rgba(236, 72, 153, 0.2); color: #f472b6; border-color: rgba(236, 72, 153, 0.3); }
         .tag.funding { background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: rgba(6, 182, 212, 0.3); }
         .tag.policy { background: rgba(139, 92, 246, 0.2); color: #a78bfa; border-color: rgba(139, 92, 246, 0.3); }
-        .tag.tech { background: rgba(34, 197, 94, 0.2); color: #4ade80; border-color: rgba(34, 197, 94, 0.3); }
-        .chart-container {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-        }
+        .chart-container { background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border); margin-bottom: 1.5rem; }
         .chart-title { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--text-secondary); }
-        footer {
-            text-align: center;
-            padding: 3rem 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-            margin-top: 3rem;
-        }
+        footer { text-align: center; padding: 3rem 0; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 3rem; }
         footer a { color: var(--primary); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
-        @media (max-width: 768px) {
-            .news-grid { grid-template-columns: 1fr; }
-            .issue-info { flex-direction: column; gap: 0.5rem; }
-            .nav-container { padding: 1rem; }
-            .stats-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } .issue-info { flex-direction: column; gap: 0.5rem; } .nav-container { padding: 1rem; } .stats-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
     <div class="bg-animation"></div>
-
     <header>
         <div class="logo">
             <div class="logo-icon">🐯</div>
             <div class="logo-text">Tiger AI Weekly</div>
         </div>
-        <p class="tagline">AI行业专业周报 · 为飞翔的老虎大人打造</p>
+        <p class="tagline">AI行业专业周报 · 深度洞察 · 精准分析</p>
         <div class="issue-info">
-            <span><i class="fas fa-calendar"></i> 2026年3月24日 - 3月28日</span>
-            <span><i class="fas fa-book"></i> 第13期</span>
-            <span><i class="fas fa-fire"></i> 本周热点</span>
+            <span><i class="fas fa-calendar"></i> 2026年4月7日 - 4月13日</span>
+            <span><i class="fas fa-book"></i> 第14期</span>
+            <span><i class="fas fa-fire"></i> 本期共17篇</span>
         </div>
     </header>
-
     <nav>
         <div class="nav-container">
             <button class="nav-btn active" onclick="showSection('overview')"><i class="fas fa-chart-pie"></i> 总览</button>
             <button class="nav-btn" onclick="showSection('models')"><i class="fas fa-brain"></i> 大模型</button>
-            <button class="nav-btn" onclick="showSection('applications')"><i class="fas fa-rocket"></i> 应用落地</button>
+            <button class="nav-btn" onclick="showSection('applications')"><i class="fas fa-rocket"></i> AI应用</button>
             <button class="nav-btn" onclick="showSection('investment')"><i class="fas fa-chart-line"></i> 投资并购</button>
             <button class="nav-btn" onclick="showSection('policy')"><i class="fas fa-balance-scale"></i> 政策法规</button>
         </div>
     </nav>
-
     <main class="container">
-        <section id="overview" class="section active">
+        <section id="overview" class="section">
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon model"><i class="fas fa-brain"></i></div>
-                        <span class="stat-trend up">+2</span>
+                        <span class="stat-trend up">+5</span>
                     </div>
                     <div class="stat-value">5</div>
-                    <div class="stat-label">大模型进展</div>
+                    <div class="stat-label">大模型动态</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon app"><i class="fas fa-rocket"></i></div>
-                        <span class="stat-trend up">+3</span>
+                        <span class="stat-trend up">+5</span>
                     </div>
                     <div class="stat-value">5</div>
-                    <div class="stat-label">应用落地动态</div>
+                    <div class="stat-label">AI应用落地</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon funding"><i class="fas fa-chart-line"></i></div>
-                        <span class="stat-trend up">↑</span>
+                        <span class="stat-trend up">+3</span>
                     </div>
-                    <div class="stat-value">$40.7B</div>
-                    <div class="stat-label">投资与融资</div>
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">投资并购</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
                         <div class="stat-icon policy"><i class="fas fa-balance-scale"></i></div>
-                        <span class="stat-trend up">↑</span>
+                        <span class="stat-trend up">+4</span>
                     </div>
                     <div class="stat-value">4</div>
-                    <div class="stat-label">政策法规动态</div>
+                    <div class="stat-label">政策法规</div>
                 </div>
             </div>
-
             <div class="chart-container">
-                <div class="chart-title">本周热点新闻分布</div>
+                <div class="chart-title">本期各类内容分布</div>
                 <div id="topicsChart" style="width: 100%; height: 300px;"></div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">投资与融资分布（$40.7B+）</div>
+                <div class="chart-title">投资融资动态</div>
                 <div id="fundingChart" style="width: 100%; height: 300px;"></div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">AI概念股本周涨跌幅</div>
+                <div class="chart-title">大模型发布统计</div>
                 <div id="stockChart" style="width: 100%; height: 300px;"></div>
             </div>
             <div class="chart-container">
-                <div class="chart-title">新闻地区分布</div>
+                <div class="chart-title">地区分布</div>
                 <div id="regionChart" style="width: 100%; height: 300px;"></div>
             </div>
         </section>
-
-        <!-- Models Section -->
-        <section id="models" class="section" style="display: none;">
+        <section id="models" class="section" style="display:none">
             <div class="section-header">
                 <div class="section-icon model"><i class="fas fa-brain"></i></div>
-                <h2 class="section-title">大模型进展</h2>
-                <span class="section-count">5 条动态</span>
+                <h2 class="section-title">大模型动态</h2>
+                <span class="section-count">5 篇</span>
             </div>
             <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/" target="_blank">Mistral AI 发布文本转语音模型，声称超越 ElevenLabs 并免费开放权重</a></h3>
-                    <p class="news-summary">Mistral AI 推出新 TTS 模型，官方测试显示语音质量、多情感表达优于 ElevenLabs。产品完全开源并免费提供权重下载，企业语音 AI 市场激战正酣——IBM 也刚宣布将高级语音能力嵌入 watsonx Orchestrate。2026 年全球语音 AI 市场已突破 220 亿美元。</p>
-                    <div class="news-tags">
-                        <span class="tag model">大模型</span>
-                        <span class="tag tech">语音AI</span>
-                        <span class="tag model">开源</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/25/google-turboquant-ai-memory-compression-silicon-valley-pied-piper/" target="_blank">Google 发布 TurboQuant 算法：AI 内存速度提升 8 倍，成本降低 50%</a></h3>
-                    <p class="news-summary">Google 发布新型量化算法 TurboQuant，可将 AI 内存速度提升 8 倍，推理成本降低 50% 或更多。发布后 24 小时内已被移植到 MLX（Apple Silicon）和 llama.cpp 等主流本地 AI 库中。</p>
-                    <div class="news-tags">
-                        <span class="tag model">Google</span>
-                        <span class="tag tech">优化算法</span>
-                        <span class="tag tech">成本优化</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://venturebeat.com/ai/indexcache-a-new-sparse-attention-optimizer-delivers-1-82x-faster-inference-on-long-context-ai-models/" target="_blank">IndexCache：稀疏注意力优化器，长上下文 AI 模型推理速度提升 1.82 倍</a></h3>
-                    <p class="news-summary">IndexCache 新型稀疏注意力优化技术，通过缓存相邻层重复 token 选择结果而非重复计算来实现加速。在长上下文 AI 模型测试中推理速度提升 1.82 倍。</p>
-                    <div class="news-tags">
-                        <span class="tag model">研究</span>
-                        <span class="tag tech">优化</span>
-                        <span class="tag model">长上下文</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://venturebeat.com/ai/how-xmemory-cuts-token-costs-and-context-bloat-in-ai-agents/" target="_blank">xMemory：新型记忆技术将 AI Agent Token 使用量减少近 50%</a></h3>
-                    <p class="news-summary">xMemory 通过四级语义层级替代传统平面 RAG，显著减少多会话 AI Agent 的 token 使用量，几乎减半，有效缓解"上下文膨胀"问题。</p>
-                    <div class="news-tags">
-                        <span class="tag model">Agent</span>
-                        <span class="tag tech">RAG</span>
-                        <span class="tag tech">成本优化</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/bytedances-new-ai-video-generation-model-dreamina-seedance-2-0/" target="_blank">字节跳动发布 Dreamina Seedance 2.0 AI 视频模型，已登陆 CapCut</a></h3>
-                    <p class="news-summary">字节跳动发布新一代 AI 视频生成模型 Dreamina Seedance 2.0，已集成到 CapCut 中。延续中国 AI 视频模型的激烈竞争格局。</p>
-                    <div class="news-tags">
-                        <span class="tag model">字节跳动</span>
-                        <span class="tag model">视频生成</span>
-                        <span class="tag app">应用</span>
-                    </div>
-                </div>
+<div class="news-card featured">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-05</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/anthropic-cuts-off-the-ability-to-use-claude-subscriptions-with-openclaw-and-third-party-ai-agents/" target="_blank">Anthropic cuts off the ability to use Claude subscriptions with OpenClaw and third-party AI agents</a></h3>
+            <p class="news-summary">Anthropic announced that Claude Code subscribers will no longer be able to use their subscriptions with OpenClaw and third-party AI agents. Users will need to opt into a pay-as-you-go or API plan to continue using Claude models with external agents. This marks a significant shift in Anthropic's developer and enterprise strategy.</p>
+            <div class="news-tags"><span class="tag model">Anthropic</span><span class="tag model">Claude</span><span class="tag policy">AI Agent</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-03</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/nvidia-launches-enterprise-ai-agent-platform-with-adobe-salesforce-sap-among-17-adopters-at-gtc-2026/" target="_blank">Nvidia launches enterprise AI agent platform with Adobe, Salesforce, SAP among 17 adopters at GTC 2026</a></h3>
+            <p class="news-summary">At GTC 2026, Nvidia CEO Jensen Huang unveiled the Nvidia Agent Toolkit — an open-source platform for building autonomous AI agents. Seventeen major enterprise software companies including Adobe, Salesforce, SAP, ServiceNow, Siemens, CrowdStrike, Atlassian, Palantir, Red Hat, Cisco and others have adopted the platform.</p>
+            <div class="news-tags"><span class="tag model">Nvidia</span><span class="tag app">Enterprise</span><span class="tag policy">AI Agent</span><span class="tag model">GTC</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-03</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/microsoft-launches-3-new-ai-models-in-direct-shot-at-openai-and-google/" target="_blank">Microsoft launches 3 new AI models in direct shot at OpenAI and Google</a></h3>
+            <p class="news-summary">Microsoft unveiled MAI-Transcribe-1, MAI-Voice-1, and MAI-Image-2 — available through Microsoft Foundry and a new MAI Playground. They span speech-to-text, voice generation, and image creation, representing Microsoft's most direct competitive move against OpenAI and Google in the foundation model space.</p>
+            <div class="news-tags"><span class="tag model">Microsoft</span><span class="tag policy">MAI</span><span class="tag model">Foundation Models</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-03</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/arcees-new-open-source-trinity-large-thinking-is-the-rare-powerful-u-s-made-ai-model-that-enterprises-can-download-and-customize/" target="_blank">Arcee's new open source Trinity-Large-Thinking: a rare powerful U.S.-made AI model enterprises can download and customize</a></h3>
+            <p class="news-summary">Arcee launched Trinity-Large-Thinking, an open-source model that positions itself as a sovereign infrastructure layer. As global labs pivot toward proprietary lock-in, Arcee's fully downloadable and customizable model offers a compelling alternative for enterprises seeking AI independence.</p>
+            <div class="news-tags"><span class="tag model">Arcee</span><span class="tag model">Open Source</span><span class="tag model">LLM</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-02</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/google-releases-gemma-4-under-apache-2-0-and-that-license-change-may-matter-more-than-benchmarks/" target="_blank">Google releases Gemma 4 under Apache 2.0 — and that license change may matter more than benchmarks</a></h3>
+            <p class="news-summary">Google released Gemma 4 under the Apache 2.0 license. As some Chinese AI labs including Alibaba's Qwen models have pulled back from fully open releases, Google is moving in the opposite direction — potentially reshaping the open-source AI landscape.</p>
+            <div class="news-tags"><span class="tag model">Google</span><span class="tag model">Gemma</span><span class="tag model">Open Source</span></div>
+        </div>
             </div>
         </section>
-
-        <!-- Applications Section -->
-        <section id="applications" class="section" style="display: none;">
+        <section id="applications" class="section" style="display:none">
             <div class="section-header">
                 <div class="section-icon app"><i class="fas fa-rocket"></i></div>
                 <h2 class="section-title">AI应用落地</h2>
-                <span class="section-count">5 条动态</span>
+                <span class="section-count">5 篇</span>
             </div>
             <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://venturebeat.com/ai/intercoms-new-post-trained-fin-apex-1-0-beats-gpt-5-4-and-claude-sonnet-4-6/" target="_blank">Intercom Fin Apex 1.0：客服解决率超越 GPT-5.4 和 Claude Sonnet 4.6</a></h3>
-                    <p class="news-summary">Intercom 发布后期训练的 Fin Apex 1.0，在客户会话解决率上超越 GPT-5.4 和 Claude Sonnet 4.6。Intercom 计划将 Fin 扩展到销售和营销，直接对标 Salesforce 的 Agentforce 愿景。</p>
-                    <div class="news-tags">
-                        <span class="tag app">企业应用</span>
-                        <span class="tag model">客服AI</span>
-                        <span class="tag app">SaaS</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://venturebeat.com/ai/anthropics-claude-can-now-control-your-mac/" target="_blank">Anthropic Claude 新增 Mac 操控能力：AI Agent 能力重大突破</a></h3>
-                    <p class="news-summary">Claude 推出 Mac 操控功能（研究预览版向付费用户开放），从对话助手转变为可执行操作的数字助手。标志着 AI Agent 能力重大突破。</p>
-                    <div class="news-tags">
-                        <span class="tag app">Agent</span>
-                        <span class="tag model">Anthropic</span>
-                        <span class="tag tech">操作系统集成</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/openai-abandons-yet-another-side-quest-chatgpts-erotic-mode/" target="_blank">OpenAI 突然关闭 Sora 视频模型、App 和 API</a></h3>
-                    <p class="news-summary">OpenAI 在持续更新 Sora 后突然宣布关闭 Sora 视频模型及其 App 和 API。消息令人震惊，因为关闭前一周 Sora 仍在高频更新。VC 们正对 AI 下一波投入数十亿，为何 OpenAI 却杀死 Sora？</p>
-                    <div class="news-tags">
-                        <span class="tag model">OpenAI</span>
-                        <span class="tag model">视频生成</span>
-                        <span class="tag model">产品调整</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://venturebeat.com/ai/cloudflares-new-dynamic-workers-ditch-containers-to-run-ai-agent-code-100x-faster/" target="_blank">Cloudflare Dynamic Workers：AI Agent 代码运行速度提升 100 倍</a></h3>
-                    <p class="news-summary">Cloudflare 发布全新 Dynamic Workers 技术，抛弃传统容器化，实现 AI Agent 代码运行速度提升 100 倍。对边缘计算和 AI Agent 实时推理意义重大。</p>
-                    <div class="news-tags">
-                        <span class="tag tech">基础设施</span>
-                        <span class="tag app">Cloudflare</span>
-                        <span class="tag tech">边缘计算</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/you-can-now-transfer-your-chats-and-personal-information-from-other-chatbots-directly-into-gemini/" target="_blank">Google Gemini 新增聊天记录迁移功能：可从其他 Chatbot 转入</a></h3>
-                    <p class="news-summary">Gemini 支持直接从其他 Chatbot 平台迁移聊天记录和个人信息。显示 Google 在 AI 产品竞争中加速差异化。</p>
-                    <div class="news-tags">
-                        <span class="tag app">Google</span>
-                        <span class="tag app">Gemini</span>
-                        <span class="tag model">用户体验</span>
-                    </div>
-                </div>
+<div class="news-card featured">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-01</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/intuits-ai-agents-hit-85-repeat-usage-the-secret-was-keeping-humans-involved/" target="_blank">Intuit's AI agents hit 85% repeat usage. The secret was keeping humans involved</a></h3>
+            <p class="news-summary">After shipping AI to 3 million customers, Intuit found that the key to 85% repeat usage wasn't better chatbots — it was knowing when to hand off to a human expert. This finding suggests a hybrid human-AI approach may be the optimal path for enterprise AI adoption.</p>
+            <div class="news-tags"><span class="tag policy">Intuit</span><span class="tag app">Enterprise AI</span><span class="tag policy">AI Agent</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-03-31</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/slack-adds-30-ai-features-to-slackbot-its-most-ambitious-update-since-the-salesforce-acquisition/" target="_blank">Slack adds 30 AI features to Slackbot, its most ambitious update since the Salesforce acquisition</a></h3>
+            <p class="news-summary">Salesforce announced 30 new AI features for Slackbot, on track to become the fastest-adopted product in Salesforce's 27-year history. Employees report up to 90 minutes of daily time savings, with some teams claiming up to 20 hours per week — translating to over $6.4 million in estimated productivity value.</p>
+            <div class="news-tags"><span class="tag app">Salesforce</span><span class="tag app">Slack</span><span class="tag app">Enterprise AI</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-01</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/the-end-of-shadow-ai-at-enterprises-kilo-launches-kiloclaw-for-organizations-to-enable-secure-ai-agents-at-scale/" target="_blank">The end of 'shadow AI' at enterprises? Kilo launches KiloClaw for Organizations to enable secure AI agents at scale</a></h3>
+            <p class="news-summary">Kilo launched KiloClaw for Organizations, designed to enable secure AI agents at enterprise scale and end 'shadow AI'. Every employee carries two identities: their human account and a corresponding bot account, enabling fine-grained security and governance.</p>
+            <div class="news-tags"><span class="tag policy">Kilo</span><span class="tag app">Enterprise AI</span><span class="tag app">Security</span><span class="tag policy">AI Agent</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-05</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/05/copilot-is-for-entertainment-purposes-only-according-to-microsofts-terms-of-use/" target="_blank">Copilot is 'for entertainment purposes only,' according to Microsoft's terms of use</a></h3>
+            <p class="news-summary">Microsoft's updated terms of use now explicitly states that Copilot is 'for entertainment purposes only', raising questions about professional use cases. The disclosure contrasts with Microsoft's aggressive marketing of Copilot as a productivity tool.</p>
+            <div class="news-tags"><span class="tag model">Microsoft</span><span class="tag app">Copilot</span><span class="tag policy">Policy</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> VentureBeat</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-01</span>
+            </div>
+            <h3 class="news-title"><a href="https://venturebeat.com/ai/metas-new-structured-prompting-technique-makes-llms-significantly-better-at-code-review-boosting-accuracy-to-93-in-some-cases/" target="_blank">Meta's new structured prompting technique makes LLMs significantly better at code review — boosting accuracy to 93%</a></h3>
+            <p class="news-summary">Meta researchers developed a structured prompting technique that significantly improves LLM performance on code review tasks, boosting accuracy to 93% in some cases. The technique requires no model training or special packaging — making it a simple drop-in improvement.</p>
+            <div class="news-tags"><span class="tag model">Meta</span><span class="tag app">Code Review</span><span class="tag model">LLM</span><span class="tag app">Research</span></div>
+        </div>
             </div>
         </section>
-
-        <!-- Investment Section -->
-        <section id="investment" class="section" style="display: none;">
+        <section id="investment" class="section" style="display:none">
             <div class="section-header">
                 <div class="section-icon funding"><i class="fas fa-chart-line"></i></div>
                 <h2 class="section-title">投资并购</h2>
-                <span class="section-count">3 条动态 | 总额 $40.7B+</span>
+                <span class="section-count">3 篇</span>
             </div>
             <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/27/why-softbanks-new-40b-loan-points-to-a-2026-openai-ipo/" target="_blank">软银新贷款 400 亿美元剑指 OpenAI 2026 年 IPO</a></h3>
-                    <p class="news-summary">SoftBank 与 OpenAI 签署 400 亿美元贷款协议。TechCrunch 分析认为，这笔贷款结构和规模强烈暗示 OpenAI 可能在 2026 年进行 IPO。Sam Altman 执掌下的 OpenAI 正从非营利研究机构向商业巨头转型。</p>
-                    <div class="news-tags">
-                        <span class="tag funding">IPO</span>
-                        <span class="tag funding">软银</span>
-                        <span class="tag model">OpenAI</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-26</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/27/memory-chip-giant-sk-hynix-could-help-end-rammageddon-with-blockbuster-us-ipo/" target="_blank">内存芯片巨头 SK 海力士计划美股 IPO，有望终结"RAMmageddon"</a></h3>
-                    <p class="news-summary">韩国内存芯片巨头 SK hynix 正筹备在美国上市。SK hynix 是 AI 内存（HBM）核心供应商之一，其上市将为投资者提供直接参与 AI 硬件产业链的机会。</p>
-                    <div class="news-tags">
-                        <span class="tag funding">IPO</span>
-                        <span class="tag funding">芯片</span>
-                        <span class="tag tech">HBM</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/conntour-raises-7m-from-general-catalyst-yc-to-build-an-ai-search-engine-for-security-video-systems/" target="_blank">Conntour 获 700 万美元融资：YC 支持的安防范畴 AI 搜索引擎</a></h3>
-                    <p class="news-summary">Conntour 获得 General Catalyst 和 YC 700 万美元融资，致力于构建安防范畴的 AI 搜索引擎。将 AI 搜索能力应用于视频安全系统是一个值得关注的新兴方向。</p>
-                    <div class="news-tags">
-                        <span class="tag funding">融资</span>
-                        <span class="tag app">AI搜索</span>
-                        <span class="tag app">安防</span>
-                    </div>
-                </div>
+<div class="news-card featured">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-05</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/05/softbank-openai-400m-ipo-2026/" target="_blank">SoftBank and others put $400M into OpenAI at $222B valuation — biggest AI round ever</a></h3>
+            <p class="news-summary">SoftBank led a $400 million investment in OpenAI at a $222 billion valuation, potentially the largest AI funding round in history. The investment signals continued massive investor appetite for AI infrastructure and foundation model companies.</p>
+            <div class="news-tags"><span class="tag funding">OpenAI</span><span class="tag funding">SoftBank</span><span class="tag funding">Funding</span><span class="tag funding">IPO</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-04</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/04/anthropic-buys-biotech-startup-coefficient-bio-400m-deal/" target="_blank">Anthropic buys biotech startup Coefficient Bio in $400M deal: Reports</a></h3>
+            <p class="news-summary">Anthropic acquired biotech startup Coefficient Bio for approximately $400 million, one of the largest AI-bio acquisitions to date. The deal signals Anthropic's growing ambition to apply Claude's capabilities into scientific research and drug discovery.</p>
+            <div class="news-tags"><span class="tag model">Anthropic</span><span class="tag funding">Biotech</span><span class="tag funding">M&A</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-05</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/05/can-orbital-data-centers-help-justify-a-massive-valuation-for-spacex/" target="_blank">Can orbital data centers help justify a massive valuation for SpaceX?</a></h3>
+            <p class="news-summary">SpaceX's proposed orbital data centers — satellites equipped with AI compute — could help justify the company's massive $350 billion valuation. The concept involves deploying GPU clusters in low Earth orbit, one of the most ambitious proposals at the intersection of space and AI.</p>
+            <div class="news-tags"><span class="tag funding">SpaceX</span><span class="tag funding">Orbital</span><span class="tag funding">Data Center</span><span class="tag policy">AI</span></div>
+        </div>
             </div>
         </section>
-
-        <!-- Policy Section -->
-        <section id="policy" class="section" style="display: none;">
+        <section id="policy" class="section" style="display:none">
             <div class="section-header">
                 <div class="section-icon policy"><i class="fas fa-balance-scale"></i></div>
                 <h2 class="section-title">政策法规</h2>
-                <span class="section-count">4 条动态</span>
+                <span class="section-count">4 篇</span>
             </div>
             <div class="news-grid">
-                <div class="news-card featured">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-27</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/anthropic-wins-injunction-against-trump-administration-over-defense-department-saga/" target="_blank">Anthropic 赢得针对特朗普政府五角大楼合同的禁令</a></h3>
-                    <p class="news-summary">Anthropic 在法庭上赢得针对特朗普政府五角大楼合同的禁令。这场诉讼反映了 AI 公司与美国政府合作时面临的复杂法律和政治挑战，也显示出 AI 监管正在进入司法争议的深水区。</p>
-                    <div class="news-tags">
-                        <span class="tag policy">法律</span>
-                        <span class="tag model">Anthropic</span>
-                        <span class="tag policy">政府合同</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/wikipedia-cracks-down-on-the-use-of-ai-in-article-writing/" target="_blank">Wikipedia 开始限制 AI 生成内容的使用</a></h3>
-                    <p class="news-summary">Wikipedia 宣布限制 AI 生成内容的使用，反映了 AI 生成内容在知识平台上可信度问题正在引发广泛担忧。</p>
-                    <div class="news-tags">
-                        <span class="tag policy">内容治理</span>
-                        <span class="tag policy">AI伦理</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-25</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/data-centers-get-ready-the-senate-wants-to-see-your-power-bills/" target="_blank">美国参议院要求数据中心披露电力消耗数据</a></h3>
-                    <p class="news-summary">美国参议院要求数据中心披露电力消耗账单。AI 数据中心的能源消耗正在成为监管焦点。</p>
-                    <div class="news-tags">
-                        <span class="tag policy">能源</span>
-                        <span class="tag policy">数据中心</span>
-                        <span class="tag tech">能耗</span>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <div class="news-meta">
-                        <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
-                        <span class="news-date"><i class="far fa-calendar"></i> 2026-03-24</span>
-                    </div>
-                    <h3 class="news-title"><a href="https://techcrunch.com/2026/03/26/david-sacks-is-done-as-ai-czar-heres-what-hes-doing-instead/" target="_blank">David Sacks 辞去 AI 主管职务，转向其他领域</a></h3>
-                    <p class="news-summary">David Sacks 结束 AI 主管职位，转向其他领域。他的离职反映出 AI 政策领域的高度不确定性和政府与科技公司之间的人才流动动态。</p>
-                    <div                    <div class="news-tags">
-                        <span class="tag policy">人事</span>
-                        <span class="tag policy">政府关系</span>
-                    </div>
-                </div>
+<div class="news-card featured">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-05</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/05/anthropic-ramps-up-its-political-activities-with-a-new-pac/" target="_blank">Anthropic ramps up its political activities with a new PAC</a></h3>
+            <p class="news-summary">Anthropic has established a political action committee (PAC) to engage more directly in U.S. policy debates around AI regulation. The move comes as Congress considers comprehensive AI legislation and the EU's AI Act begins implementation.</p>
+            <div class="news-tags"><span class="tag model">Anthropic</span><span class="tag policy">Policy</span><span class="tag policy">PAC</span><span class="tag policy">Regulation</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-04</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/04/ai-companies-are-building-huge-natural-gas-plants-to-power-data-centers-what-could-go-wrong/" target="_blank">AI companies are building huge natural gas plants to power data centers. What could go wrong?</a></h3>
+            <p class="news-summary">Major AI companies including Microsoft, Google, and Meta are investing heavily in natural gas power plants to meet the enormous energy demands of AI data centers. Environmental groups warn this could significantly set back corporate climate commitments.</p>
+            <div class="news-tags"><span class="tag policy">Climate</span><span class="tag funding">Data Center</span><span class="tag policy">Energy</span><span class="tag policy">Environment</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-03</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/03/anthropic-took-down-thousands-of-github-repos-trying-to-yank-its-leaked-source-code/" target="_blank">Anthropic took down thousands of GitHub repos trying to yank its leaked source code</a></h3>
+            <p class="news-summary">Anthropic accidentally took down thousands of GitHub repositories while attempting to remove its own leaked source code, causing widespread disruption to legitimate open-source projects. The incident highlights the risks of automated content removal systems.</p>
+            <div class="news-tags"><span class="tag model">Anthropic</span><span class="tag app">Security</span><span class="tag policy">GitHub</span></div>
+        </div>
+        <div class="news-card">
+            <div class="news-meta">
+                <span class="news-source"><i class="fas fa-globe"></i> TechCrunch</span>
+                <span class="news-date"><i class="far fa-calendar"></i> 2026-04-04</span>
+            </div>
+            <h3 class="news-title"><a href="https://techcrunch.com/2026/04/04/15-percent-of-americans-say-theyd-be-willing-to-work-for-an-ai-boss-according-to-new-poll/" target="_blank">15% of Americans say they'd be willing to work for an AI boss, according to new poll</a></h3>
+            <p class="news-summary">A new survey found that 15% of Americans would be willing to work under an AI manager. The poll reveals evolving but still cautious attitudes toward AI authority in workplace settings.</p>
+            <div class="news-tags"><span class="tag policy">Survey</span><span class="tag policy">Workplace</span><span class="tag policy">AI Management</span></div>
+        </div>
             </div>
         </section>
     </main>
-
     <footer>
-        <p>🐯 Tiger AI Weekly · 第13期 · 2026年3月28日</p>
+        <p>🐯 Tiger AI Weekly · 第14期 · 2026年4月7日</p>
         <p>为飞翔的老虎大人制作 · <a href="https://github.com/defialways/tiger-ai-insights">GitHub</a></p>
     </footer>
-
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
-            document.getElementById(sectionId).style.display = 'block';
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if (sectionId === 'overview') {
-                setTimeout(initCharts, 100);
-            }
-        }
-
-        let chartsInitialized = false;
-        function initCharts() {
-            if (chartsInitialized) return;
-            chartsInitialized = true;
-
-            // Topics Chart
-            const topicsChart = echarts.init(document.getElementById('topicsChart'));
-            topicsChart.setOption({
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
-                legend: { orient: 'vertical', right: '5%', top: 'center', textStyle: { color: '#94a3b8' } },
-                series: [{
-                    type: 'pie', radius: ['40%', '70%'], center: ['35%', '50%'],
-                    avoidLabelOverlap: false,
-                    itemStyle: { borderRadius: 8, borderColor: '#1e293b', borderWidth: 2 },
-                    label: { show: true, color: '#f8fafc', formatter: '{b}\n{c}条' },
-                    data: [
-                        { value: 5, name: '大模型', itemStyle: { color: '#6366f1' } },
-                        { value: 5, name: '应用落地', itemStyle: { color: '#ec4899' } },
-                        { value: 3, name: '投资并购', itemStyle: { color: '#06b6d4' } },
-                        { value: 4, name: '政策法规', itemStyle: { color: '#8b5cf6' } }
-                    ]
-                }]
-            });
-
-            // Funding Chart
-            const fundingChart = echarts.init(document.getElementById('fundingChart'));
-            const fundingData = [
-                { name: '软银OpenAI贷款', value: 400, avgAmount: '$400亿' },
-                { name: 'SK海力士IPO', value: 100, avgAmount: '待定' },
-                { name: 'Conntour', value: 0.07, avgAmount: '$700万' }
-            ];
-            fundingChart.setOption({
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' }, formatter: (params) => `${params[0].name}<br/>金额: $${params[0].value}B` },
-                grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
-                xAxis: { type: 'category', data: fundingData.map(d => d.name), axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', rotate: 15 } },
-                yAxis: { type: 'value', name: '十亿美元', nameTextStyle: { color: '#64748b' }, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8' }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } } },
-                series: [{ type: 'bar', data: fundingData.map(d => d.value), itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#06b6d4' }, { offset: 1, color: '#22c55e' }]), borderRadius: [8, 8, 0, 0] }, label: { show: true, position: 'top', color: '#f8fafc', formatter: '{c}B' } }]
-            });
-
-            // Stock Chart
-            const stockChart = echarts.init(document.getElementById('stockChart'));
-            const stockDates = ['3月22日', '3月23日', '3月24日', '3月25日', '3月26日', '3月27日', '3月28日'];
-            stockChart.setOption({
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
-                legend: { data: ['英伟达', '微软', '谷歌', 'Meta'], textStyle: { color: '#94a3b8', fontSize: 11 }, top: 0 },
-                grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
-                xAxis: { type: 'category', boundaryGap: false, data: stockDates, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', fontSize: 10 } },
-                yAxis: { type: 'value', name: '涨跌幅%', nameTextStyle: { color: '#64748b', fontSize: 11 }, axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', formatter: '{value}%' }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } } },
-                series: [
-                    { name: '英伟达', type: 'line', smooth: true, symbol: 'circle', symbolSize: 8, data: [-2, -1, 3, 5, 4, 2, 1], lineStyle: { color: '#76b900', width: 3 }, itemStyle: { color: '#76b900' }, areaStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: 'rgba(118, 185, 0, 0.3)' }, { offset: 1, color: 'rgba(118, 185, 0, 0)' }]) } },
-                    { name: '微软', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [1, 2, 1, 0, -1, 1, 2], lineStyle: { color: '#00a4ef', width: 2 }, itemStyle: { color: '#00a4ef' } },
-                    { name: '谷歌', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [0, 1, 2, 3, 1, 0, 1], lineStyle: { color: '#4285f4', width: 2 }, itemStyle: { color: '#4285f4' } },
-                    { name: 'Meta', type: 'line', smooth: true, symbol: 'circle', symbolSize: 6, data: [2, 3, 2, 1, 0, 2, 3], lineStyle: { color: '#0668e1', width: 2 }, itemStyle: { color: '#0668e1' } }
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(function(s) { s.style.display = 'none'; });
+        document.getElementById(sectionId).style.display = 'block';
+        document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('active'); });
+        event.target.closest('.nav-btn').classList.add('active');
+        if (sectionId === 'overview') { setTimeout(initCharts, 100); }
+    }
+    var chartsInitialized = false;
+    function initCharts() {
+        if (chartsInitialized) return;
+        chartsInitialized = true;
+        var topicsChart = echarts.init(document.getElementById('topicsChart'));
+        topicsChart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+            legend: { orient: 'vertical', right: '5%', top: 'center', textStyle: { color: '#94a3b8' } },
+            series: [{
+                type: 'pie', radius: ['40%', '70%'], center: ['35%', '50%'],
+                avoidLabelOverlap: false,
+                itemStyle: { borderRadius: 8, borderColor: '#1e293b', borderWidth: 2 },
+                label: { show: true, color: '#f8fafc', formatter: '{b}: {c}篇' },
+                data: [
+                    { value: 5, name: '大模型', itemStyle: { color: '#6366f1' } },
+                    { value: 5, name: 'AI应用', itemStyle: { color: '#ec4899' } },
+                    { value: 3, name: '投资并购', itemStyle: { color: '#06b6d4' } },
+                    { value: 4, name: '政策法规', itemStyle: { color: '#8b5cf6' } }
                 ]
-            });
-
-            // Region Chart
-            const regionChart = echarts.init(document.getElementById('regionChart'));
-            regionChart.setOption({
-                backgroundColor: 'transparent',
-                tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
-                series: [{
-                    type: 'pie', radius: ['30%', '75%'], center: ['50%', '50%'], roseType: 'area',
-                    itemStyle: { borderRadius: 6, borderColor: '#1e293b', borderWidth: 2 },
-                    label: { show: true, color: '#f8fafc', formatter: '{b}\n{c}%' },
-                    data: [
-                        { value: 47, name: '美国', itemStyle: { color: '#6366f1' } },
-                        { value: 29, name: '中国', itemStyle: { color: '#ec4899' } },
-                        { value: 10, name: '欧洲', itemStyle: { color: '#06b6d4' } },
-                        { value: 7, name: '韩国', itemStyle: { color: '#8b5cf6' } },
-                        { value: 4, name: '新加坡', itemStyle: { color: '#22c55e' } },
-                        { value: 3, name: '其他', itemStyle: { color: '#64748b' } }
-                    ]
-                }]
-            });
-
-            window.addEventListener('resize', () => {
-                topicsChart.resize(); fundingChart.resize(); stockChart.resize(); regionChart.resize();
-            });
-
-            // Animate cards
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            document.querySelectorAll('.news-card, .stat-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-        }
+            }]
+        });
+        var fundingChart = echarts.init(document.getElementById('fundingChart'));
+        fundingChart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' }, formatter: function(params) { return params[0].name + '<br/>$' + params[0].value + 'B'; } },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: '15%', containLabel: true },
+            xAxis: { type: 'category', data: ['OpenAI', 'Anthropic', 'SpaceX'], axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8', rotate: 15 } },
+            yAxis: { type: 'value', name: '估值/金额 ($B)', nameTextStyle: { color: '#94a3b8' }, axisLine: { lineStyle: { color: '#334155' } }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }, axisLabel: { color: '#94a3b8' } },
+            series: [{
+                type: 'bar',
+                data: [222, 0.4, 350],
+                itemStyle: { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ offset: 0, color: '#06b6d4' }, { offset: 1, color: '#22c55e' }]), borderRadius: [8, 8, 0, 0] },
+                label: { show: true, position: 'top', color: '#f8fafc', formatter: function(p) { return "$" + p.value + "B"; } }
+            }]
+        });
+        var stockChart = echarts.init(document.getElementById('stockChart'));
+        stockChart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'axis', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+            legend: { data: ['Anthropic', 'Google', 'Microsoft', 'Arcee'], top: 0, textStyle: { color: '#94a3b8' } },
+            grid: { left: '3%', right: '4%', bottom: '3%', top: '40px', containLabel: true },
+            xAxis: { type: 'category', data: ['1月', '2月', '3月', '4月(本周)'], axisLine: { lineStyle: { color: '#334155' } }, axisLabel: { color: '#94a3b8' } },
+            yAxis: { type: 'value', name: '发布数量', nameTextStyle: { color: '#94a3b8' }, axisLine: { lineStyle: { color: '#334155' } }, splitLine: { lineStyle: { color: '#334155', type: 'dashed' } }, axisLabel: { color: '#94a3b8' } },
+            series: [
+                { name: 'Anthropic', type: 'line', smooth: true, data: [2, 3, 2, 2], lineStyle: { color: '#6366f1', width: 3 }, itemStyle: { color: '#6366f1' }, areaStyle: { color: 'rgba(99, 102, 241, 0.2)' } },
+                { name: 'Google', type: 'line', smooth: true, data: [1, 2, 1, 1], lineStyle: { color: '#ec4899', width: 3 }, itemStyle: { color: '#ec4899' }, areaStyle: { color: 'rgba(236, 72, 153, 0.2)' } },
+                { name: 'Microsoft', type: 'line', smooth: true, data: [1, 1, 2, 1], lineStyle: { color: '#06b6d4', width: 3 }, itemStyle: { color: '#06b6d4' }, areaStyle: { color: 'rgba(6, 182, 212, 0.2)' } },
+                { name: 'Arcee', type: 'line', smooth: true, data: [0, 1, 1, 1], lineStyle: { color: '#22c55e', width: 3 }, itemStyle: { color: '#22c55e' }, areaStyle: { color: 'rgba(34, 197, 94, 0.2)' } }
+            ]
+        });
+        var regionChart = echarts.init(document.getElementById('regionChart'));
+        regionChart.setOption({
+            backgroundColor: 'transparent',
+            tooltip: { trigger: 'item', backgroundColor: 'rgba(30, 41, 59, 0.95)', borderColor: '#334155', textStyle: { color: '#f8fafc' } },
+            series: [{
+                type: 'pie', radius: ['30%', '75%'], center: ['50%', '50%'], roseType: 'area',
+                itemStyle: { borderRadius: 6, borderColor: '#1e293b', borderWidth: 2 },
+                label: { color: '#f8fafc', formatter: '{b}: {c}篇' },
+                data: [
+                    { value: 8, name: '美国', itemStyle: { color: '#6366f1' } },
+                    { value: 3, name: '欧洲', itemStyle: { color: '#06b6d4' } },
+                    { value: 1, name: '亚洲', itemStyle: { color: '#ec4899' } },
+                    { value: 1, name: '其他', itemStyle: { color: '#8b5cf6' } }
+                ]
+            }]
+        });
+        window.addEventListener('resize', function() {
+            topicsChart.resize(); fundingChart.resize(); stockChart.resize(); regionChart.resize();
+        });
+    }
+    window.addEventListener('resize', function() { if (chartsInitialized) { topicsChart && topicsChart.resize(); fundingChart && fundingChart.resize(); stockChart && stockChart.resize(); regionChart && regionChart.resize(); } });
     </script>
 </body>
 </html>
