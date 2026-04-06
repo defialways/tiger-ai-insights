@@ -15,6 +15,10 @@ Tiger AI Weekly 是一份专注于人工智能行业的专业周报，涵盖：
 
 🌐 **GitHub Pages**: https://defialways.github.io/tiger-ai-insights
 
+## 当前期号
+
+📖 **第14期**（2026年4月7日 - 4月13日）
+
 ## 周报特点
 
 - 📊 **数据可视化** - 交互式图表展示行业趋势
